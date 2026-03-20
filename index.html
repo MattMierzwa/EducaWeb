@@ -6,7 +6,7 @@
     <title>EducaWeb - Aprenda HTML, CSS e JS na Prática</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="light">
     <!-- Navegação -->
     <nav class="navbar">
         <div class="nav-container">
@@ -18,6 +18,8 @@
                 <li><a href="#javascript" class="nav-link" data-section="javascript">JavaScript</a></li>
                 <li><a href="#pratica" class="nav-link" data-section="pratica">Prática</a></li>
             </ul>
+            <!-- NOVO: Botão de tema escuro -->
+            <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
         </div>
     </nav>
 
@@ -65,7 +67,7 @@
                 <div class="html-demo">
                     <div class="code-display">
                         <h4>Código HTML:</h4>
-                        <pre>&lt;div class="card"&gt;
+                        <pre id="htmlCodeExample">&lt;div class="card"&gt;
     &lt;h3&gt;💡 Card de Exemplo&lt;/h3&gt;
     &lt;p&gt;Este é um parágrafo dentro de um card&lt;/p&gt;
     &lt;ul&gt;
@@ -73,6 +75,8 @@
         &lt;li&gt;Item 2 da lista&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;</pre>
+                        <!-- NOVO: Botão copiar código -->
+                        <button class="btn-copy" data-copy="htmlCodeExample">📋 Copiar código</button>
                     </div>
                     <div class="result-display">
                         <h4>Resultado Renderizado:</h4>
@@ -128,6 +132,20 @@
                     <div class="css-controls">
                         <button class="btn btn-secondary" id="applyStyleBtn">Aplicar estilo CSS</button>
                         <p class="style-info" id="styleInfo">Clique no botão para ver o CSS em ação</p>
+                    </div>
+                    
+                    <!-- NOVO: Seletor de cores personalizado -->
+                    <div class="color-picker-container">
+                        <label>🎨 Escolha uma cor para o elemento:</label>
+                        <input type="color" id="customColorPicker" value="#667eea">
+                        <button id="applyColorBtn" class="btn-small">Aplicar cor</button>
+                    </div>
+                    
+                    <!-- NOVO: Slider de tamanho -->
+                    <div class="size-slider-container">
+                        <label>📏 Ajustar tamanho:</label>
+                        <input type="range" id="sizeSlider" min="100" max="300" value="200" step="10">
+                        <span id="sizeValue">200px</span>
                     </div>
                     
                     <div class="css-code-hint">
@@ -198,6 +216,24 @@
                         <small>Variáveis e eventos de clique</small>
                     </div>
                 </div>
+                
+                <!-- NOVO: Calculadora simples -->
+                <div class="calculator-demo">
+                    <h4>🧮 Mini Calculadora JavaScript</h4>
+                    <div class="calculator">
+                        <input type="number" id="calcNum1" placeholder="Número 1" value="5">
+                        <select id="calcOperator">
+                            <option value="+">+ (Soma)</option>
+                            <option value="-">- (Subtração)</option>
+                            <option value="*">* (Multiplicação)</option>
+                            <option value="/">/ (Divisão)</option>
+                        </select>
+                        <input type="number" id="calcNum2" placeholder="Número 2" value="3">
+                        <button id="calcBtn" class="btn-small">Calcular</button>
+                        <p id="calcResult">Resultado: 8</p>
+                    </div>
+                </div>
+                
                 <p class="demo-note">✅ JavaScript reage a ações - todos os botões acima são controlados por código JavaScript.</p>
             </div>
         </div>
@@ -207,6 +243,18 @@
     <section id="pratica" class="section bg-light">
         <div class="container">
             <h2 class="section-title">🧪 Área Prática - Combine Tudo!</h2>
+            
+            <!-- NOVO: Barra de Progresso -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>📊 Progresso de Aprendizado</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <p id="progressMessage" class="progress-message">Clique nos botões para progredir!</p>
+            </div>
             
             <!-- Explicação Teórica -->
             <div class="theory-card">
@@ -254,8 +302,41 @@
                         <div id="practiceResult" class="result-box">
                             <p>Aguardando interação...</p>
                         </div>
+                        <!-- NOVO: Botão reset -->
+                        <button id="resetProgressBtn" class="btn-small" style="margin-top: 1rem;">🔄 Resetar Progresso</button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- NOVO: Quiz Rápido -->
+            <div class="quiz-container">
+                <h3>📝 Quiz Rápido - Teste seu conhecimento!</h3>
+                <div class="quiz-question">
+                    <p><strong>1. Qual linguagem define a estrutura de uma página web?</strong></p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="css"> CSS</label>
+                        <label><input type="radio" name="q1" value="js"> JavaScript</label>
+                        <label><input type="radio" name="q1" value="html"> HTML</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>2. Qual linguagem é usada para estilizar elementos?</strong></p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="css"> CSS</label>
+                        <label><input type="radio" name="q2" value="js"> JavaScript</label>
+                        <label><input type="radio" name="q2" value="html"> HTML</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>3. Qual linguagem adiciona interatividade?</strong></p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="css"> CSS</label>
+                        <label><input type="radio" name="q3" value="js"> JavaScript</label>
+                        <label><input type="radio" name="q3" value="html"> HTML</label>
+                    </div>
+                </div>
+                <button id="checkQuizBtn" class="btn btn-primary">Verificar Respostas</button>
+                <p id="quizResult" class="quiz-result"></p>
             </div>
             
             <!-- Resumo Final -->
@@ -273,7 +354,9 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 EducaWeb - Aprenda HTML, CSS e JavaScript na prática</p>
+            <p>&copy; 2024 EducaWeb - Aprenda HTML, CSS e JavaScript na prática</p>
+            <!-- NOVO: Status -->
+            <p id="lastInteraction" class="last-interaction"></p>
         </div>
     </footer>
 
