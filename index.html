@@ -12,18 +12,17 @@
         <div class="nav-container">
             <h1 class="logo">Educa<span>Web</span></h1>
             <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link" data-section="inicio">Início</a></li>
-                <li><a href="#html" class="nav-link" data-section="html">HTML</a></li>
-                <li><a href="#css" class="nav-link" data-section="css">CSS</a></li>
-                <li><a href="#javascript" class="nav-link" data-section="javascript">JavaScript</a></li>
-                <li><a href="#pratica" class="nav-link" data-section="pratica">Prática</a></li>
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#html" class="nav-link">HTML</a></li>
+                <li><a href="#css" class="nav-link">CSS</a></li>
+                <li><a href="#javascript" class="nav-link">JavaScript</a></li>
+                <li><a href="#pratica" class="nav-link">Prática</a></li>
             </ul>
-            <!-- NOVO: Botão de tema escuro -->
-            <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
         </div>
     </nav>
 
-    <!-- Header/Hero - Seção Início -->
+    <!-- Hero Section -->
     <header id="inicio" class="hero">
         <div class="hero-content">
             <h2>Aprenda Programação Web de Verdade</h2>
@@ -35,24 +34,23 @@
         </div>
     </header>
 
-    <!-- ===== SEÇÃO HTML ===== -->
+    <!-- Seção HTML -->
     <section id="html" class="section">
         <div class="container">
             <h2 class="section-title">📘 HTML - Linguagem de Marcação de Hipertexto</h2>
             
-            <!-- Explicação Teórica -->
             <div class="theory-card">
                 <h3>O que é HTML?</h3>
-                <p>HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web. Ele descreve a <strong>estrutura</strong> do conteúdo usando "marcações" (tags). Pense no HTML como o <strong>esqueleto</strong> de um site - ele define onde cada elemento (títulos, parágrafos, imagens, links) deve ficar.</p>
+                <p>HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web. Ele descreve a <strong>estrutura</strong> do conteúdo usando "marcações" (tags). Pense no HTML como o <strong>esqueleto</strong> de um site.</p>
                 
                 <div class="theory-grid">
                     <div class="theory-item">
                         <h4>🔹 Tags</h4>
-                        <p>São elementos que definem o conteúdo. Ex: <code>&lt;h1&gt;Título&lt;/h1&gt;</code>, <code>&lt;p&gt;Parágrafo&lt;/p&gt;</code></p>
+                        <p>Elementos que definem o conteúdo. Ex: <code>&lt;h1&gt;Título&lt;/h1&gt;</code></p>
                     </div>
                     <div class="theory-item">
                         <h4>🔹 Atributos</h4>
-                        <p>Propriedades que modificam as tags. Ex: <code>&lt;img src="foto.jpg" alt="Descrição"&gt;</code></p>
+                        <p>Propriedades que modificam as tags. Ex: <code>&lt;img src="foto.jpg"&gt;</code></p>
                     </div>
                     <div class="theory-item">
                         <h4>🔹 Estrutura</h4>
@@ -61,7 +59,6 @@
                 </div>
             </div>
             
-            <!-- Demonstração Prática -->
             <div class="practice-demo">
                 <h3>🎯 Exemplo Prático de HTML</h3>
                 <div class="html-demo">
@@ -75,12 +72,11 @@
         &lt;li&gt;Item 2 da lista&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;</pre>
-                        <!-- NOVO: Botão copiar código -->
                         <button class="btn-copy" data-copy="htmlCodeExample">📋 Copiar código</button>
                     </div>
                     <div class="result-display">
                         <h4>Resultado Renderizado:</h4>
-                        <div class="card" id="htmlCard">
+                        <div class="card">
                             <h3>💡 Card de Exemplo</h3>
                             <p>Este é um parágrafo dentro de um card</p>
                             <ul>
@@ -95,33 +91,31 @@
         </div>
     </section>
 
-    <!-- ===== SEÇÃO CSS ===== -->
+    <!-- Seção CSS -->
     <section id="css" class="section bg-light">
         <div class="container">
             <h2 class="section-title">🎨 CSS - Folhas de Estilo em Cascata</h2>
             
-            <!-- Explicação Teórica -->
             <div class="theory-card">
                 <h3>O que é CSS?</h3>
-                <p>CSS (Cascading Style Sheets) é a linguagem usada para <strong>estilizar</strong> o HTML. Enquanto o HTML é o esqueleto, o CSS é a <strong>pele, roupas e maquiagem</strong> - define cores, tamanhos, fontes, posicionamento e animações.</p>
+                <p>CSS (Cascading Style Sheets) é a linguagem usada para <strong>estilizar</strong> o HTML. Enquanto o HTML é o esqueleto, o CSS é a <strong>aparência</strong> - define cores, tamanhos, fontes e posicionamento.</p>
                 
                 <div class="theory-grid">
                     <div class="theory-item">
                         <h4>🔹 Seletores</h4>
-                        <p>Identificam quais elementos estilizar. Ex: <code>p</code> (tag), <code>.classe</code>, <code>#id</code></p>
+                        <p>Identificam quais elementos estilizar. Ex: <code>p</code>, <code>.classe</code>, <code>#id</code></p>
                     </div>
                     <div class="theory-item">
                         <h4>🔹 Propriedades</h4>
-                        <p>Características que você altera. Ex: <code>color</code>, <code>background</code>, <code>font-size</code></p>
+                        <p>Características que você altera. Ex: <code>color</code>, <code>background</code></p>
                     </div>
                     <div class="theory-item">
                         <h4>🔹 Cascata</h4>
-                        <p>A ordem das regras importa - estilos podem ser herdados e sobrepostos</p>
+                        <p>A ordem das regras importa - estilos podem ser herdados</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Demonstração Prática -->
             <div class="practice-demo">
                 <h3>🎯 Exemplo Prático de CSS</h3>
                 <div class="css-demo">
@@ -129,19 +123,15 @@
                         <p id="boxText">Elemento sem estilo</p>
                     </div>
                     
-                    <div class="css-controls">
-                        <button class="btn btn-secondary" id="applyStyleBtn">Aplicar estilo CSS</button>
-                        <p class="style-info" id="styleInfo">Clique no botão para ver o CSS em ação</p>
-                    </div>
+                    <button class="btn btn-secondary" id="applyStyleBtn">Aplicar estilo CSS</button>
+                    <p class="style-info" id="styleInfo">Clique no botão para ver o CSS em ação</p>
                     
-                    <!-- NOVO: Seletor de cores personalizado -->
                     <div class="color-picker-container">
-                        <label>🎨 Escolha uma cor para o elemento:</label>
+                        <label>🎨 Escolha uma cor:</label>
                         <input type="color" id="customColorPicker" value="#667eea">
                         <button id="applyColorBtn" class="btn-small">Aplicar cor</button>
                     </div>
                     
-                    <!-- NOVO: Slider de tamanho -->
                     <div class="size-slider-container">
                         <label>📏 Ajustar tamanho:</label>
                         <input type="range" id="sizeSlider" min="100" max="300" value="200" step="10">
@@ -149,14 +139,11 @@
                     </div>
                     
                     <div class="css-code-hint">
-                        <h4>CSS aplicado ao clicar:</h4>
+                        <h4>CSS aplicado:</h4>
                         <pre id="cssCodeDisplay">{
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+    background: #e0e0e0;
+    color: #333;
+    border: 2px solid #ccc;
 }</pre>
                     </div>
                 </div>
@@ -165,20 +152,19 @@
         </div>
     </section>
 
-    <!-- ===== SEÇÃO JAVASCRIPT ===== -->
+    <!-- Seção JavaScript -->
     <section id="javascript" class="section">
         <div class="container">
             <h2 class="section-title">⚡ JavaScript - A Linguagem da Interatividade</h2>
             
-            <!-- Explicação Teórica -->
             <div class="theory-card">
                 <h3>O que é JavaScript?</h3>
-                <p>JavaScript é a linguagem de programação que adiciona <strong>comportamento e interatividade</strong> às páginas web. Se HTML é o esqueleto e CSS é a aparência, JavaScript são os <strong>músculos e o cérebro</strong> - faz o site responder a cliques, validar formulários, criar animações, etc.</p>
+                <p>JavaScript é a linguagem de programação que adiciona <strong>comportamento e interatividade</strong> às páginas web. Se HTML é o esqueleto e CSS é a aparência, JavaScript são os <strong>músculos</strong> - faz o site responder a cliques e interagir com o usuário.</p>
                 
                 <div class="theory-grid">
                     <div class="theory-item">
                         <h4>🔹 Eventos</h4>
-                        <p>Ações do usuário: <code>click</code>, <code>mouseover</code>, <code>keypress</code></p>
+                        <p>Ações do usuário: <code>click</code>, <code>mouseover</code></p>
                     </div>
                     <div class="theory-item">
                         <h4>🔹 DOM</h4>
@@ -191,7 +177,6 @@
                 </div>
             </div>
             
-            <!-- Demonstração Prática -->
             <div class="practice-demo">
                 <h3>🎯 Exemplos Práticos de JavaScript</h3>
                 <div class="js-demo">
@@ -199,14 +184,14 @@
                         <h3>📝 Manipular Texto</h3>
                         <p id="changeableText">Texto original</p>
                         <button class="btn btn-small" id="changeTextBtn">Mudar texto</button>
-                        <small>O JavaScript altera o conteúdo do parágrafo</small>
+                        <small>JavaScript altera o conteúdo</small>
                     </div>
                     
                     <div class="js-card">
                         <h3>⚠️ Alertas</h3>
                         <p>Exibe uma caixa de diálogo</p>
                         <button class="btn btn-small" id="alertBtn">Mostrar alerta</button>
-                        <small>window.alert() é uma função nativa do JS</small>
+                        <small>window.alert() do JavaScript</small>
                     </div>
                     
                     <div class="js-card">
@@ -217,16 +202,15 @@
                     </div>
                 </div>
                 
-                <!-- NOVO: Calculadora simples -->
                 <div class="calculator-demo">
                     <h4>🧮 Mini Calculadora JavaScript</h4>
                     <div class="calculator">
                         <input type="number" id="calcNum1" placeholder="Número 1" value="5">
                         <select id="calcOperator">
-                            <option value="+">+ (Soma)</option>
-                            <option value="-">- (Subtração)</option>
-                            <option value="*">* (Multiplicação)</option>
-                            <option value="/">/ (Divisão)</option>
+                            <option value="+">+ Soma</option>
+                            <option value="-">- Subtração</option>
+                            <option value="*">× Multiplicação</option>
+                            <option value="/">÷ Divisão</option>
                         </select>
                         <input type="number" id="calcNum2" placeholder="Número 2" value="3">
                         <button id="calcBtn" class="btn-small">Calcular</button>
@@ -239,12 +223,11 @@
         </div>
     </section>
 
-    <!-- ===== SEÇÃO PRÁTICA ===== -->
+    <!-- Seção Prática -->
     <section id="pratica" class="section bg-light">
         <div class="container">
             <h2 class="section-title">🧪 Área Prática - Combine Tudo!</h2>
             
-            <!-- NOVO: Barra de Progresso -->
             <div class="progress-container">
                 <div class="progress-info">
                     <span>📊 Progresso de Aprendizado</span>
@@ -256,7 +239,6 @@
                 <p id="progressMessage" class="progress-message">Clique nos botões para progredir!</p>
             </div>
             
-            <!-- Explicação Teórica -->
             <div class="theory-card">
                 <h3>Como HTML, CSS e JavaScript trabalham juntos?</h3>
                 <p>Os três formam a base do desenvolvimento web moderno:</p>
@@ -277,13 +259,11 @@
                 </div>
             </div>
             
-            <!-- Demonstração Prática -->
             <div class="practice-demo">
                 <h3>🎯 Exercite seus conhecimentos</h3>
                 <div class="practice-area">
                     <div class="practice-card">
                         <h3>📝 Saudação personalizada</h3>
-                        <p><small>HTML cria o input, CSS estiliza, JS processa</small></p>
                         <input type="text" id="nameInput" placeholder="Digite seu nome" class="practice-input">
                         <button class="btn btn-primary" id="greetBtn">Dizer olá</button>
                         <div id="greetingMessage" class="result-box"></div>
@@ -291,24 +271,20 @@
                     
                     <div class="practice-card">
                         <h3>🎨 Mudar cor de fundo</h3>
-                        <p><small>HTML cria o botão, CSS define cores, JS altera estilos</small></p>
                         <button class="btn btn-primary" id="changeColorBtn">Mudar cor da seção</button>
                         <p id="colorFeedback">Clique para ver JavaScript manipulando CSS</p>
                     </div>
                     
                     <div class="practice-card">
                         <h3>📊 Resultados</h3>
-                        <p><small>Feedback em tempo real das interações</small></p>
                         <div id="practiceResult" class="result-box">
                             <p>Aguardando interação...</p>
                         </div>
-                        <!-- NOVO: Botão reset -->
                         <button id="resetProgressBtn" class="btn-small" style="margin-top: 1rem;">🔄 Resetar Progresso</button>
                     </div>
                 </div>
             </div>
             
-            <!-- NOVO: Quiz Rápido -->
             <div class="quiz-container">
                 <h3>📝 Quiz Rápido - Teste seu conhecimento!</h3>
                 <div class="quiz-question">
@@ -339,7 +315,6 @@
                 <p id="quizResult" class="quiz-result"></p>
             </div>
             
-            <!-- Resumo Final -->
             <div class="summary-box">
                 <h4>📌 Resumo do que você aprendeu:</h4>
                 <ul>
@@ -351,11 +326,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 EducaWeb - Aprenda HTML, CSS e JavaScript na prática</p>
-            <!-- NOVO: Status -->
             <p id="lastInteraction" class="last-interaction"></p>
         </div>
     </footer>
