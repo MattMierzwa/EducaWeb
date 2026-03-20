@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   '📘 HTML criou este botão\n' +
                   '🎨 CSS estilizou ele\n' +
                   '⚡ JavaScript está mostrando esta mensagem\n\n' +
-                  
+                  '✅ Site Educacional - Todos os botões funcionam!');
             
             this.style.backgroundColor = '#dc3545';
             this.style.transform = 'scale(0.95)';
