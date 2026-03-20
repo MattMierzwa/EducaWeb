@@ -337,3 +337,263 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s both`;
     });
 });
+// Adicione NO FINAL do arquivo script.js, antes do último console.log
+
+    // ========== NOVAS FUNCIONALIDADES ==========
+    
+    // 11. TEMA ESCURO (DARK MODE)
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Verificar preferência salva
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        if (themeToggle) themeToggle.textContent = '☀️';
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                this.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+                updatePracticeResult('🌞 Tema claro ativado!');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                this.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+                updatePracticeResult('🌙 Tema escuro ativado!');
+            }
+        });
+    }
+    
+    // 12. SISTEMA DE PROGRESSO
+    let completedInteractions = new Set();
+    const totalInteractions = 10; // Total de interações possíveis
+    
+    function updateProgress(interactionName) {
+        completedInteractions.add(interactionName);
+        const percent = Math.min(100, Math.floor((completedInteractions.size / totalInteractions) * 100));
+        
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        const progressMessage = document.getElementById('progressMessage');
+        
+        if (progressFill) progressFill.style.width = percent + '%';
+        if (progressPercent) progressPercent.textContent = percent + '%';
+        
+        if (percent === 100) {
+            if (progressMessage) progressMessage.innerHTML = '🎉 PARABÉNS! Você completou todas as interações! 🎉';
+        } else if (percent > 0) {
+            if (progressMessage) progressMessage.innerHTML = `📈 Continue interagindo! ${completedInteractions.size}/${totalInteractions} interações realizadas.`;
+        }
+        
+        // Salvar progresso
+        localStorage.setItem('progress', JSON.stringify([...completedInteractions]));
+    }
+    
+    // Carregar progresso salvo
+    const savedProgress = localStorage.getItem('progress');
+    if (savedProgress) {
+        completedInteractions = new Set(JSON.parse(savedProgress));
+        updateProgress('');
+    }
+    
+    // 13. BOTÃO COPIAR CÓDIGO
+    const copyButtons = document.querySelectorAll('.btn-copy');
+    copyButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-copy');
+            const codeElement = document.getElementById(targetId);
+            if (codeElement) {
+                const code = codeElement.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = '✅ Copiado!';
+                    this.style.backgroundColor = '#28a745';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                    updatePracticeResult('📋 Código copiado para a área de transferência!');
+                });
+            }
+        });
+    });
+    
+    // 14. SELETOR DE COR PERSONALIZADO
+    const customColorPicker = document.getElementById('customColorPicker');
+    const applyColorBtn = document.getElementById('applyColorBtn');
+    
+    if (customColorPicker && applyColorBtn && styleBox) {
+        applyColorBtn.addEventListener('click', function() {
+            const color = customColorPicker.value;
+            styleBox.style.backgroundColor = color;
+            styleBox.style.background = color;
+            if (!styleBox.classList.contains('styled')) {
+                styleBox.style.color = '#fff';
+                styleBox.style.border = 'none';
+            }
+            updatePracticeResult(`🎨 Cor personalizada aplicada: ${color}`);
+        });
+    }
+    
+    // 15. SLIDER DE TAMANHO
+    const sizeSlider = document.getElementById('sizeSlider');
+    const sizeValue = document.getElementById('sizeValue');
+    
+    if (sizeSlider && sizeValue && styleBox) {
+        sizeSlider.addEventListener('input', function() {
+            const size = this.value + 'px';
+            sizeValue.textContent = size;
+            styleBox.style.width = size;
+            updatePracticeResult(`📏 Tamanho ajustado para ${size}`);
+        });
+    }
+    
+    // 16. CALCULADORA SIMPLES
+    const calcBtn = document.getElementById('calcBtn');
+    const calcNum1 = document.getElementById('calcNum1');
+    const calcNum2 = document.getElementById('calcNum2');
+    const calcOperator = document.getElementById('calcOperator');
+    const calcResult = document.getElementById('calcResult');
+    
+    if (calcBtn && calcNum1 && calcNum2 && calcOperator && calcResult) {
+        calcBtn.addEventListener('click', function() {
+            const num1 = parseFloat(calcNum1.value);
+            const num2 = parseFloat(calcNum2.value);
+            const operator = calcOperator.value;
+            let result;
+            
+            switch(operator) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': result = num2 !== 0 ? num1 / num2 : 'Erro (divisão por zero)'; break;
+                default: result = 0;
+            }
+            
+            calcResult.innerHTML = `Resultado: ${result}`;
+            updatePracticeResult(`🧮 Cálculo realizado: ${num1} ${operator} ${num2} = ${result}`);
+            updateProgress('calculadora');
+        });
+    }
+    
+    // 17. QUIZ RÁPIDO
+    const checkQuizBtn = document.getElementById('checkQuizBtn');
+    const quizResult = document.getElementById('quizResult');
+    
+    if (checkQuizBtn && quizResult) {
+        checkQuizBtn.addEventListener('click', function() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            
+            let score = 0;
+            let feedback = '';
+            
+            if (q1 && q1.value === 'html') { score++; feedback += '✅ Q1 correta! '; }
+            else if (q1) feedback += '❌ Q1: HTML é a resposta correta. ';
+            else feedback += '❌ Q1: Não respondida. ';
+            
+            if (q2 && q2.value === 'css') { score++; feedback += '✅ Q2 correta! '; }
+            else if (q2) feedback += '❌ Q2: CSS é a resposta correta. ';
+            else feedback += '❌ Q2: Não respondida. ';
+            
+            if (q3 && q3.value === 'js') { score++; feedback += '✅ Q3 correta! '; }
+            else if (q3) feedback += '❌ Q3: JavaScript é a resposta correta. ';
+            else feedback += '❌ Q3: Não respondida. ';
+            
+            quizResult.innerHTML = `🎯 Você acertou ${score}/3! ${feedback}`;
+            quizResult.className = score === 3 ? 'quiz-result correct' : 'quiz-result wrong';
+            
+            updatePracticeResult(`📝 Quiz completado: ${score}/3 acertos`);
+            if (score === 3) updateProgress('quiz');
+        });
+    }
+    
+    // 18. BOTÃO RESET PROGRESSO
+    const resetProgressBtn = document.getElementById('resetProgressBtn');
+    
+    if (resetProgressBtn) {
+        resetProgressBtn.addEventListener('click', function() {
+            completedInteractions.clear();
+            updateProgress('');
+            localStorage.removeItem('progress');
+            
+            const progressFill = document.getElementById('progressFill');
+            const progressPercent = document.getElementById('progressPercent');
+            const progressMessage = document.getElementById('progressMessage');
+            
+            if (progressFill) progressFill.style.width = '0%';
+            if (progressPercent) progressPercent.textContent = '0%';
+            if (progressMessage) progressMessage.innerHTML = 'Progresso resetado! Clique nos botões para começar de novo.';
+            
+            updatePracticeResult('🔄 Progresso resetado!');
+        });
+    }
+    
+    // 19. ATUALIZAR PROGRESSO NOS BOTÕES EXISTENTES
+    // Adicionar tracking para os botões existentes
+    const existingButtons = {
+        'applyStyleBtn': 'estilo_css',
+        'changeTextBtn': 'mudar_texto',
+        'alertBtn': 'alerta',
+        'counterBtn': 'contador',
+        'greetBtn': 'saudacao',
+        'changeColorBtn': 'mudar_cor'
+    };
+    
+    Object.keys(existingButtons).forEach(btnId => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+            const originalClick = btn.onclick;
+            btn.addEventListener('click', () => {
+                updateProgress(existingButtons[btnId]);
+            });
+        }
+    });
+    
+    // 20. MOSTRAR ÚLTIMA INTERAÇÃO
+    const lastInteractionSpan = document.getElementById('lastInteraction');
+    const originalUpdatePracticeResult = updatePracticeResult;
+    
+    window.updatePracticeResult = function(message) {
+        if (lastInteractionSpan) {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            lastInteractionSpan.innerHTML = `Última interação: ${timeStr} - ${message.substring(0, 50)}`;
+        }
+        originalUpdatePracticeResult(message);
+    };
+    
+    // Sobrescrever updatePracticeResult globalmente
+    window.updatePracticeResult = updatePracticeResult;
+    
+    // 21. SALVAR NOME DO USUÁRIO
+    const savedName = localStorage.getItem('userName');
+    if (savedName && nameInput) {
+        nameInput.placeholder = `Bem-vindo de volta, ${savedName}!`;
+    }
+    
+    if (greetBtn) {
+        const originalGreet = greetBtn.onclick;
+        greetBtn.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+            if (name) {
+                localStorage.setItem('userName', name);
+            }
+        });
+    }
+    
+    console.log('✅ NOVAS FUNCIONALIDADES ADICIONADAS:');
+    console.log('   🌙 Tema escuro');
+    console.log('   📋 Copiar código');
+    console.log('   🎨 Seletor de cores personalizado');
+    console.log('   📏 Slider de tamanho');
+    console.log('   🧮 Calculadora JavaScript');
+    console.log('   📊 Barra de progresso');
+    console.log('   📝 Quiz interativo');
+    console.log('   💾 LocalStorage (salva preferências)');
