@@ -1,344 +1,299 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Site Educacional carregado - Inicializando...');
-    
-    // ========== VARIÁVEIS GLOBAIS ==========
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
-    const styleBox = document.getElementById('styleBox');
-    
-    // ========== FUNÇÃO AUXILIAR ==========
-    function updatePracticeResult(message) {
-        const practiceResult = document.getElementById('practiceResult');
-        if (practiceResult) {
-            practiceResult.innerHTML = `<p>${message}</p>`;
-            practiceResult.style.color = '#1e3c72';
-            practiceResult.style.fontWeight = '500';
-        }
-        
-        const lastInteractionSpan = document.getElementById('lastInteraction');
-        if (lastInteractionSpan) {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString();
-            lastInteractionSpan.innerHTML = `Última interação: ${timeStr} - ${message.substring(0, 50)}`;
-        }
-    }
-    
-    // ========== 1. NAVEGAÇÃO SUAVE ==========
-    function smoothScroll(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            smoothScroll(this.getAttribute('href'));
-        });
-    });
-    
-    // ========== 2. BOTÃO CSS - APLICAR ESTILO ==========
-    const applyStyleBtn = document.getElementById('applyStyleBtn');
-    const styleInfo = document.getElementById('styleInfo');
-    const boxText = document.getElementById('boxText');
-    const cssCodeDisplay = document.getElementById('cssCodeDisplay');
-    
-    if (applyStyleBtn && styleBox) {
-        applyStyleBtn.addEventListener('click', function() {
-            if (styleBox.classList.contains('styled')) {
-                styleBox.classList.remove('styled');
-                styleBox.style.background = '#e0e0e0';
-                styleBox.style.color = '#333';
-                styleBox.style.border = '2px solid #ccc';
-                if (boxText) boxText.textContent = 'Elemento sem estilo';
-                if (styleInfo) styleInfo.innerHTML = '🎨 Estilos removidos - clique novamente para aplicar CSS';
-                if (cssCodeDisplay) cssCodeDisplay.innerHTML = `{\n    background: #e0e0e0;\n    color: #333;\n    border: 2px solid #ccc;\n}`;
-                this.textContent = 'Aplicar estilo CSS';
-            } else {
-                styleBox.classList.add('styled');
-                styleBox.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                styleBox.style.color = 'white';
-                styleBox.style.border = 'none';
-                if (boxText) boxText.textContent = '✨ ELEMENTO COM CSS APLICADO! ✨';
-                if (styleInfo) styleInfo.innerHTML = '✅ Estilo CSS aplicado! Aparência completamente transformada';
-                if (cssCodeDisplay) cssCodeDisplay.innerHTML = `{\n    background: linear-gradient(135deg, #667eea, #764ba2);\n    color: white;\n    transform: scale(1.1);\n    box-shadow: 0 10px 20px rgba(102,126,234,0.3);\n}`;
-                this.textContent = 'Remover estilo CSS';
-            }
-            updatePracticeResult('🎨 Estilo CSS ' + (styleBox.classList.contains('styled') ? 'aplicado' : 'removido'));
-        });
-    }
-    
-    // ========== 3. BOTÃO MUDAR TEXTO ==========
-    const changeTextBtn = document.getElementById('changeTextBtn');
-    const changeableText = document.getElementById('changeableText');
-    
-    if (changeTextBtn && changeableText) {
-        const textOptions = ['📝 Texto original', '✨ Texto modificado pelo JavaScript!', '🚀 JavaScript manipula o DOM!', '💡 Conteúdo mudou sem recarregar', '🎯 Interatividade em ação!', '⭐ Isso é JavaScript puro!'];
-        let textIndex = 0;
-        
-        changeTextBtn.addEventListener('click', function() {
-            textIndex = (textIndex + 1) % textOptions.length;
-            changeableText.textContent = textOptions[textIndex];
-            changeableText.style.color = '#667eea';
-            changeableText.style.fontWeight = 'bold';
-            updatePracticeResult(`📝 Texto alterado: "${textOptions[textIndex]}"`);
-        });
-    }
-    
-    // ========== 4. BOTÃO ALERTA ==========
-    const alertBtn = document.getElementById('alertBtn');
-    if (alertBtn) {
-        alertBtn.addEventListener('click', function() {
-            alert('🚨 ALERTA JAVASCRIPT!\n\n📘 HTML criou este botão\n🎨 CSS estilizou ele\n⚡ JavaScript está mostrando esta mensagem\n\n✅ Site Educacional - Todos os botões funcionam!');
-            updatePracticeResult('⚠️ Alerta exibido com sucesso!');
-        });
-    }
-    
-    // ========== 5. CONTADOR ==========
-    const counterBtn = document.getElementById('counterBtn');
-    const counterDisplay = document.getElementById('counter');
-    
-    if (counterBtn && counterDisplay) {
-        let counter = 0;
-        counterBtn.addEventListener('click', function() {
-            counter++;
-            counterDisplay.textContent = counter;
-            updatePracticeResult(`🔢 Contador: ${counter} clique(s)`);
-        });
-    }
-    
-    // ========== 6. SAUDAÇÃO PERSONALIZADA ==========
-    const greetBtn = document.getElementById('greetBtn');
-    const nameInput = document.getElementById('nameInput');
-    const greetingMessage = document.getElementById('greetingMessage');
-    
-    if (greetBtn && nameInput && greetingMessage) {
-        greetBtn.addEventListener('click', function() {
-            let name = nameInput.value.trim();
-            if (name === '') name = 'visitante';
-            greetingMessage.textContent = `👋 Olá, ${name}! Bem-vindo ao EducaWeb!`;
-            greetingMessage.style.color = '#28a745';
-            greetingMessage.style.fontWeight = 'bold';
-            greetingMessage.style.backgroundColor = '#d4edda';
-            greetingMessage.style.padding = '1rem';
-            greetingMessage.style.borderRadius = '5px';
-            updatePracticeResult(`✅ Saudação gerada para: ${name}`);
-            nameInput.value = '';
-        });
-    }
-    
-    // ========== 7. MUDAR COR DE FUNDO ==========
-    const changeColorBtn = document.getElementById('changeColorBtn');
-    const practiceSection = document.getElementById('pratica');
-    const colorFeedback = document.getElementById('colorFeedback');
-    
-    if (changeColorBtn && practiceSection) {
-        const colors = ['#f8f9fa', '#e3f2fd', '#f1f8e9', '#fff3e0', '#fce4ec', '#e8eaf6'];
-        const colorNames = ['Cinza claro', 'Azul claro', 'Verde claro', 'Laranja claro', 'Rosa claro', 'Roxo claro'];
-        let colorIndex = 0, clickCount = 0;
-        
-        changeColorBtn.addEventListener('click', function() {
-            colorIndex = (colorIndex + 1) % colors.length;
-            clickCount++;
-            practiceSection.style.backgroundColor = colors[colorIndex];
-            if (colorFeedback) colorFeedback.innerHTML = `🎨 Cor: ${colorNames[colorIndex]} (${clickCount}x)`;
-            updatePracticeResult(`🎨 Cor alterada para ${colorNames[colorIndex]}`);
-        });
-    }
-    
-    // ========== 8. TEMA ESCURO ==========
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.setAttribute('data-theme', 'dark');
-        if (themeToggle) themeToggle.textContent = '☀️';
-    }
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            if (isDark) {
-                body.setAttribute('data-theme', 'light');
-                this.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-                updatePracticeResult('🌞 Tema claro ativado!');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                this.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-                updatePracticeResult('🌙 Tema escuro ativado!');
-            }
-        });
-    }
-    
-    // ========== 9. BOTÃO COPIAR CÓDIGO ==========
-    const copyButtons = document.querySelectorAll('.btn-copy');
-    copyButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-copy');
-            const codeElement = document.getElementById(targetId);
-            if (codeElement) {
-                navigator.clipboard.writeText(codeElement.textContent).then(() => {
-                    const originalText = this.textContent;
-                    this.textContent = '✅ Copiado!';
-                    setTimeout(() => { this.textContent = originalText; }, 2000);
-                    updatePracticeResult('📋 Código copiado!');
-                });
-            }
-        });
-    });
-    
-    // ========== 10. SELETOR DE COR PERSONALIZADO ==========
-    const customColorPicker = document.getElementById('customColorPicker');
-    const applyColorBtn = document.getElementById('applyColorBtn');
-    
-    if (customColorPicker && applyColorBtn && styleBox) {
-        applyColorBtn.addEventListener('click', function() {
-            styleBox.style.backgroundColor = customColorPicker.value;
-            styleBox.style.background = customColorPicker.value;
-            updatePracticeResult(`🎨 Cor personalizada aplicada: ${customColorPicker.value}`);
-        });
-    }
-    
-    // ========== 11. SLIDER DE TAMANHO ==========
-    const sizeSlider = document.getElementById('sizeSlider');
-    const sizeValue = document.getElementById('sizeValue');
-    
-    if (sizeSlider && sizeValue && styleBox) {
-        sizeSlider.addEventListener('input', function() {
-            const size = this.value + 'px';
-            sizeValue.textContent = size;
-            styleBox.style.width = size;
-            updatePracticeResult(`📏 Tamanho ajustado para ${size}`);
-        });
-    }
-    
-    // ========== 12. CALCULADORA ==========
-    const calcBtn = document.getElementById('calcBtn');
-    const calcNum1 = document.getElementById('calcNum1');
-    const calcNum2 = document.getElementById('calcNum2');
-    const calcOperator = document.getElementById('calcOperator');
-    const calcResult = document.getElementById('calcResult');
-    
-    if (calcBtn && calcNum1 && calcNum2 && calcOperator && calcResult) {
-        calcBtn.addEventListener('click', function() {
-            const num1 = parseFloat(calcNum1.value);
-            const num2 = parseFloat(calcNum2.value);
-            const op = calcOperator.value;
-            let result;
-            switch(op) {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/': result = num2 !== 0 ? num1 / num2 : 'Erro!'; break;
-                default: result = 0;
-            }
-            calcResult.innerHTML = `Resultado: ${result}`;
-            updatePracticeResult(`🧮 Cálculo: ${num1} ${op} ${num2} = ${result}`);
-        });
-    }
-    
-    // ========== 13. QUIZ ==========
-    const checkQuizBtn = document.getElementById('checkQuizBtn');
-    const quizResult = document.getElementById('quizResult');
-    
-    if (checkQuizBtn && quizResult) {
-        checkQuizBtn.addEventListener('click', function() {
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            const q2 = document.querySelector('input[name="q2"]:checked');
-            const q3 = document.querySelector('input[name="q3"]:checked');
-            
-            let score = 0, feedback = '';
-            if (q1 && q1.value === 'html') { score++; feedback += '✅ Q1 correta! '; }
-            else feedback += '❌ Q1: HTML é a resposta. ';
-            if (q2 && q2.value === 'css') { score++; feedback += '✅ Q2 correta! '; }
-            else feedback += '❌ Q2: CSS é a resposta. ';
-            if (q3 && q3.value === 'js') { score++; feedback += '✅ Q3 correta! '; }
-            else feedback += '❌ Q3: JavaScript é a resposta. ';
-            
-            quizResult.innerHTML = `🎯 Você acertou ${score}/3! ${feedback}`;
-            quizResult.className = score === 3 ? 'quiz-result correct' : 'quiz-result wrong';
-            updatePracticeResult(`📝 Quiz: ${score}/3 acertos`);
-        });
-    }
-    
-    // ========== 14. SISTEMA DE PROGRESSO ==========
-    let completedInteractions = new Set();
-    const savedProgress = localStorage.getItem('progress');
-    if (savedProgress) completedInteractions = new Set(JSON.parse(savedProgress));
-    
-    function updateProgress(interactionName) {
-        if (interactionName) completedInteractions.add(interactionName);
-        const percent = Math.min(100, Math.floor((completedInteractions.size / 9) * 100));
-        const progressFill = document.getElementById('progressFill');
-        const progressPercent = document.getElementById('progressPercent');
-        const progressMessage = document.getElementById('progressMessage');
-        if (progressFill) progressFill.style.width = percent + '%';
-        if (progressPercent) progressPercent.textContent = percent + '%';
-        if (progressMessage && percent === 100) progressMessage.innerHTML = '🎉 PARABÉNS! Você completou todas as interações! 🎉';
-        else if (progressMessage && percent > 0) progressMessage.innerHTML = `📈 ${completedInteractions.size}/9 interações realizadas.`;
-        localStorage.setItem('progress', JSON.stringify([...completedInteractions]));
-    }
-    
-    updateProgress('');
-    
-    const progressButtons = {
-        'applyStyleBtn': 'css_style',
-        'changeTextBtn': 'mudar_texto',
-        'alertBtn': 'alerta',
-        'counterBtn': 'contador',
-        'greetBtn': 'saudacao',
-        'changeColorBtn': 'mudar_cor',
-        'applyColorBtn': 'cor_personalizada',
-        'calcBtn': 'calculadora',
-        'checkQuizBtn': 'quiz'
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Estado Global ---
+    const state = {
+        xp: parseInt(localStorage.getItem('educaXP')) || 0,
+        badges: JSON.parse(localStorage.getItem('educaBadges')) || [],
+        theme: localStorage.getItem('educaTheme') || 'light'
     };
+
+    // --- Inicialização ---
+    initTheme();
+    updateGamificationUI();
+    setupNavigation();
+    setupHTMLSection();
+    setupCSSSection();
+    setupJSSection();
+    setupPlayground();
     
-    Object.keys(progressButtons).forEach(btnId => {
-        const btn = document.getElementById(btnId);
-        if (btn) btn.addEventListener('click', () => updateProgress(progressButtons[btnId]));
-    });
-    
-    // ========== 15. BOTÃO RESET ==========
-    const resetProgressBtn = document.getElementById('resetProgressBtn');
-    if (resetProgressBtn) {
-        resetProgressBtn.addEventListener('click', function() {
-            completedInteractions.clear();
-            updateProgress('');
-            localStorage.removeItem('progress');
-            document.getElementById('progressFill').style.width = '0%';
-            document.getElementById('progressPercent').textContent = '0%';
-            document.getElementById('progressMessage').innerHTML = 'Progresso resetado! Clique nos botões para começar.';
-            updatePracticeResult('🔄 Progresso resetado!');
+    // --- Funções Principais ---
+
+    function initTheme() {
+        document.body.setAttribute('data-theme', state.theme);
+        const icon = document.querySelector('#themeToggle i');
+        icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', state.theme);
+            icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('educaTheme', state.theme);
         });
     }
-    
-    // ========== 16. DESTACAR LINK ATIVO ==========
-    window.addEventListener('scroll', function() {
-        let current = '';
-        const scrollPosition = window.scrollY + 150;
-        sections.forEach(section => {
-            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-                current = section.getAttribute('id');
-            }
+
+    function addXP(amount, badgeId = null) {
+        state.xp += amount;
+        localStorage.setItem('educaXP', state.xp);
+        
+        if (badgeId && !state.badges.includes(badgeId)) {
+            state.badges.push(badgeId);
+            localStorage.setItem('educaBadges', JSON.stringify(state.badges));
+            unlockBadgeVisual(badgeId);
+            showNotification(`🏆 Conquista Desbloqueada: ${badgeId.replace('-', ' ').toUpperCase()}!`);
+        }
+        
+        updateGamificationUI();
+        updateLastAction(`Ganhou +${amount} XP`);
+    }
+
+    function updateGamificationUI() {
+        document.getElementById('miniScore').textContent = `${state.xp} XP`;
+                state.badges.forEach(id => {
+            const el = document.getElementById(`badge-${id}`);
+            if (el) el.classList.add('unlocked');
         });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
+    }
+
+    function unlockBadgeVisual(id) {
+        const el = document.getElementById(`badge-${id}`);
+        if (el) {
+            el.classList.remove('locked');
+            el.classList.add('unlocked');
+        }
+    }
+
+    function updateLastAction(msg) {
+        const el = document.getElementById('lastAction');
+        if(el) el.textContent = `Último: ${msg} - ${new Date().toLocaleTimeString()}`;
+    }
+
+    function showNotification(text) {
+        // Cria um toast simples
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--primary); color: white;
+            padding: 15px 25px; border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 9999; animation: fadeInUp 0.5s;
+        `;
+        toast.textContent = text;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    // --- Navegação ---
+    function setupNavigation() {
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-    });
-    
-    // ========== 17. SALVAR NOME ==========
-    const savedName = localStorage.getItem('userName');
-    if (savedName && nameInput) nameInput.placeholder = `Bem-vindo de volta, ${savedName}!`;
-    if (greetBtn) greetBtn.addEventListener('click', function() {
-        const name = nameInput.value.trim();
-        if (name) localStorage.setItem('userName', name);
-    });
-    
-    // ========== FINAL ==========
-    console.log('%c✅ TODOS OS BOTÕES FUNCIONANDO!', 'color: green; font-size: 16px');
-    updatePracticeResult('✨ Todos os botões funcionando! Clique em qualquer botão para testar.');
+
+        // Fechar menu ao clicar em link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        // Scroll Spy
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // --- Seção HTML ---
+    function setupHTMLSection() {
+        const revealBtn = document.getElementById('revealHtmlBtn');
+        const hiddenContent = document.getElementById('htmlHiddenContent');
+        
+        if(revealBtn) {
+            revealBtn.addEventListener('click', () => {
+                hiddenContent.style.display = 'block';
+                revealBtn.style.display = 'none';
+                addXP(10, 'html');
+            });
+        }
+    }
+
+    // Funções Globais para os botões do Canvas HTML
+    window.addHtmlElement = (type) => {
+        const canvas = document.getElementById('htmlCanvas');
+        const el = document.createElement(type === 'img' ? 'div' : type);
+        
+        if (type === 'button') {
+            el.className = 'btn-chip';
+            el.textContent = 'Botão Novo';
+            el.onclick = () => { alert('Funciona!'); addXP(5); };
+        } else if (type === 'input') {
+            el.type = 'text';
+            el.placeholder = 'Digite algo...';
+            el.style.padding = '8px';
+            el.style.borderRadius = '4px';
+            el.style.border = '1px solid #ccc';
+        } else if (type === 'img') {
+            el.style.width = '50px';            el.style.height = '50px';
+            el.style.background = '#ddd';
+            el.innerHTML = '<i class="fas fa-image" style="line-height:50px; color:#666"></i>';
+        }
+        
+        canvas.appendChild(el);
+        addXP(5);
+    };
+
+    window.clearHtmlCanvas = () => {
+        document.getElementById('htmlCanvas').innerHTML = '<div class="placeholder-box">Elementos aparecerão aqui...</div>';
+    };
+
+    // --- Seção CSS ---
+    function setupCSSSection() {
+        const target = document.getElementById('cssTargetBox');
+        const radiusInput = document.getElementById('radiusInput');
+        const shadowInput = document.getElementById('shadowInput');
+        const rotateInput = document.getElementById('rotateInput');
+        const codeOutput = document.getElementById('cssCodeOutput');
+        
+        function updateStyles() {
+            const r = radiusInput.value;
+            const s = shadowInput.value;
+            const rot = rotateInput.value;
+            
+            target.style.borderRadius = `${r}px`;
+            target.style.boxShadow = `${s}px ${s}px ${s*2}px rgba(0,0,0,0.2)`;
+            target.style.transform = `rotate(${rot}deg)`;
+            
+            codeOutput.innerHTML = `border-radius: ${r}px;<br>box-shadow: ${s}px ${s}px ${s*2}px rgba(0,0,0,0.2);<br>transform: rotate(${rot}deg);`;
+        }
+
+        [radiusInput, shadowInput, rotateInput].forEach(input => {
+            input.addEventListener('input', () => {
+                updateStyles();
+                addXP(1); // XP incremental pequeno
+            });
+        });
+
+        document.querySelectorAll('.color-dot').forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                target.style.backgroundColor = e.target.dataset.color;
+                addXP(2);
+            });
+        });
+        
+        // Badge trigger simples
+        radiusInput.addEventListener('change', () => addXP(10, 'css'));
+    }
+    // --- Seção JS ---
+    function setupJSSection() {
+        // Calculadora
+        const calcBtn = document.getElementById('jsCalcBtn');
+        if(calcBtn) {
+            calcBtn.addEventListener('click', () => {
+                const n1 = parseFloat(document.getElementById('jsNum1').value) || 0;
+                const n2 = parseFloat(document.getElementById('jsNum2').value) || 0;
+                const op = document.getElementById('jsOp').value;
+                let res = 0;
+                
+                switch(op) {
+                    case '+': res = n1 + n2; break;
+                    case '-': res = n1 - n2; break;
+                    case '*': res = n1 * n2; break;
+                    case '/': res = n2 !== 0 ? n1 / n2 : 'Erro'; break;
+                }
+                
+                document.getElementById('jsResult').textContent = `Resultado: ${res}`;
+                addXP(5);
+            });
+        }
+
+        // Todo List
+        const addTodoBtn = document.getElementById('addTodoBtn');
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+        
+        if(addTodoBtn) {
+            addTodoBtn.addEventListener('click', () => {
+                const val = todoInput.value.trim();
+                if(val) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${val} <span class="del"><i class="fas fa-trash"></i></span>`;
+                    li.querySelector('.del').onclick = function() {
+                        li.remove();
+                        addXP(2);
+                    };
+                    todoList.appendChild(li);
+                    todoInput.value = '';
+                    addXP(5);
+                }
+            });
+        }
+
+        // Console
+        const logBtn = document.getElementById('logMessageBtn');
+        const clearBtn = document.getElementById('clearConsoleBtn');
+        const screen = document.getElementById('consoleOutput');        
+        if(logBtn) {
+            logBtn.addEventListener('click', () => {
+                const msgs = ['Hello World', 'System OK', 'Loading...', 'Error 404', 'Success!'];
+                const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+                screen.innerHTML += `> ${randomMsg}<br>`;
+                screen.scrollTop = screen.scrollHeight;
+                addXP(2);
+            });
+            
+            clearBtn.addEventListener('click', () => {
+                screen.innerHTML = '> Console limpo.<br>';
+            });
+        }
+        
+        // Badge Trigger
+        calcBtn.addEventListener('click', () => addXP(15, 'js'));
+    }
+
+    // --- Playground (Editor de Código) ---
+    function setupPlayground() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+        const runBtn = document.getElementById('runCodeBtn');
+        const iframe = document.getElementById('previewFrame');
+
+        // Tab Switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
+            });
+        });
+
+        // Run Code Logic
+        runBtn.addEventListener('click', () => {
+            const html = document.getElementById('codeHtml').value;
+            const css = `<style>${document.getElementById('codeCss').value}</style>`;
+            const js = `<script>${document.getElementById('codeJs').value}<\/script>`;
+            
+            const combinedCode = `${html}\n${css}\n${js}`;
+            
+            iframe.srcdoc = combinedCode;
+            
+            addXP(20, 'dev'); // Grande XP por usar o editor
+            showNotification("Código executado com sucesso!");
+        });        
+        // Auto-run inicial
+        runBtn.click();
+    }
 });
