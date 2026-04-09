@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EducaWeb 2.0 - Domine o Frontend</title>
-    <!-- Fonte Moderna -->
+    <!-- Fontes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SEU CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body data-theme="light">
-    
-    <!-- Navegação Glassmorphism -->
+
+    <!-- Navegação -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -44,9 +45,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section com Partículas/Fundo Animado -->
+    <!-- Hero Section -->
     <header id="inicio" class="hero">
-        <div class="hero-overlay"></div>
         <div class="container hero-content">            <div class="hero-text fade-in-up">
                 <span class="badge-new">Versão 2.0</span>
                 <h2>Aprenda a Criar o <br><span class="gradient-text">Futuro da Web</span></h2>
@@ -90,20 +90,14 @@
                 <div class="card theory-card slide-in-left">
                     <h3>Conceitos Fundamentais</h3>
                     <ul class="concept-list">
-                        <li>
-                            <strong>Tags Semânticas:</strong> Use <code><header></code>, <code><article></code> para significado.
-                        </li>
-                        <li>
-                            <strong>Atributos:</strong> Dados extras como <code>src</code>, <code>href</code>, <code>class</code>.
-                        </li>
-                        <li>                            <strong>DOM Tree:</strong> O HTML é organizado como uma árvore genealógica de elementos.
-                        </li>
+                        <li><strong>Tags Semânticas:</strong> Use <code><header></code>, <code><article></code> para significado.</li>
+                        <li><strong>Atributos:</strong> Dados extras como <code>src</code>, <code>href</code>, <code>class</code>.</li>
+                        <li><strong>DOM Tree:</strong> O HTML é organizado como uma árvore genealógica.</li>
                     </ul>
                     <div class="interactive-task">
                         <p>Tarefa: Clique abaixo para revelar a estrutura oculta.</p>
-                        <button id="revealHtmlBtn" class="btn btn-small btn-html">Revelar Estrutura</button>
-                        <div id="htmlHiddenContent" class="hidden-content" style="display:none;">
-                            <pre><!DOCTYPE html>
+                        <button id="revealHtmlBtn" class="btn btn-small btn-html">Revelar Estrutura</button>                        <div id="htmlHiddenContent" class="hidden-content" style="display:none; margin-top:10px;">
+                            <pre style="background:#f4f4f4; padding:10px; border-radius:5px; color:#333;"><!DOCTYPE html>
 <html>
   <body>
     <!-- Conteúdo visível aqui -->
@@ -119,8 +113,7 @@
                         <span class="badge">Ao Vivo</span>
                     </div>
                     <div class="demo-canvas" id="htmlCanvas">
-                        <!-- Elementos serão inseridos via JS -->
-                        <div class="placeholder-box">Elementos aparecerão aqui...</div>
+                        <div class="placeholder-box" style="color:#999; width:100%; text-align:center;">Elementos aparecerão aqui...</div>
                     </div>
                     <div class="controls">
                         <button class="btn-chip" onclick="addHtmlElement('button')">+ Botão</button>
@@ -145,14 +138,14 @@
             <div class="css-playground card">
                 <div class="playground-layout">
                     <div class="controls-panel">
-                        <h3>Laboratório de Estilos</h3>                        <div class="control-group">
+                        <h3>Laboratório de Estilos</h3>
+                        <div class="control-group">
                             <label>Border Radius</label>
                             <input type="range" id="radiusInput" min="0" max="50" value="8">
                         </div>
                         <div class="control-group">
                             <label>Sombra (Box Shadow)</label>
-                            <input type="range" id="shadowInput" min="0" max="50" value="10">
-                        </div>
+                            <input type="range" id="shadowInput" min="0" max="50" value="10">                        </div>
                         <div class="control-group">
                             <label>Rotação</label>
                             <input type="range" id="rotateInput" min="0" max="360" value="0">
@@ -194,14 +187,14 @@
                 <div class="card js-card">
                     <h4><i class="fas fa-calculator"></i> Calculadora Dinâmica</h4>
                     <div class="calc-interface">
-                        <input type="number" id="jsNum1" placeholder="0">                        <select id="jsOp">
+                        <input type="number" id="jsNum1" placeholder="0">
+                        <select id="jsOp">
                             <option value="+">+</option>
                             <option value="-">-</option>
                             <option value="*">×</option>
                             <option value="/">÷</option>
                         </select>
-                        <input type="number" id="jsNum2" placeholder="0">
-                        <button id="jsCalcBtn" class="btn-full">Calcular</button>
+                        <input type="number" id="jsNum2" placeholder="0">                        <button id="jsCalcBtn" class="btn-full">Calcular</button>
                         <div id="jsResult" class="result-display">Resultado: --</div>
                     </div>
                 </div>
@@ -243,14 +236,14 @@
 
             <div class="editor-container glass-panel">
                 <div class="editor-sidebar">
-                    <div class="tabs">                        <button class="tab-btn active" data-tab="html">HTML</button>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="html">HTML</button>
                         <button class="tab-btn" data-tab="css">CSS</button>
                         <button class="tab-btn" data-tab="js">JS</button>
                     </div>
                     
                     <div class="tab-content active" id="tab-html">
-                        <textarea id="codeHtml" spellcheck="false"><div class="box">
-  <h2>Olá!</h2>
+                        <textarea id="codeHtml" spellcheck="false"><div class="box">  <h2>Olá!</h2>
   <p>Edite este texto.</p>
   <button id="btn">Clique-me</button>
 </div></textarea>
@@ -292,14 +285,14 @@ btn.addEventListener('click', () => {
     <!-- Gamificação e Footer -->
     <section class="achievements-section">
         <div class="container">
-            <h3>🏆 Suas Conquistas</h3>            <div class="badges-grid" id="badgesContainer">
+            <h3>🏆 Suas Conquistas</h3>
+            <div class="badges-grid" id="badgesContainer">
                 <div class="badge locked" id="badge-html" title="Explorador HTML">
                     <i class="fab fa-html5"></i>
                     <span>HTML Master</span>
                 </div>
                 <div class="badge locked" id="badge-css" title="Artista CSS">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS Artist</span>
+                    <i class="fab fa-css3-alt"></i>                    <span>CSS Artist</span>
                 </div>
                 <div class="badge locked" id="badge-js" title="Lógico JS">
                     <i class="fab fa-js"></i>
@@ -319,21 +312,17 @@ btn.addEventListener('click', () => {
                 <h4>EducaWeb</h4>
                 <p>Ensinando o futuro, uma linha de código por vez.</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Sobre</a>
-                <a href="#">Recursos</a>
-                <a href="#">Comunidade</a>
-            </div>
             <div class="footer-status">
                 <span id="statusIndicator">● Online</span>
                 <p id="lastAction">Aguardando interação...</p>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 EducaWeb Project. Feito com <i class="fas fa-heart" style="color: #ff6b6b;"></i> e código.
+            &copy; 2026 EducaWeb Project.
         </div>
     </footer>
 
+    <!-- SEU JAVASCRIPT -->
     <script src="script.js"></script>
 </body>
 </html>
