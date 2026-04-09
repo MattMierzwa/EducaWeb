@@ -20,14 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function initTheme() {
         document.body.setAttribute('data-theme', state.theme);
         const icon = document.querySelector('#themeToggle i');
-        icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        if(icon) icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            state.theme = state.theme === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', state.theme);
-            icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            localStorage.setItem('educaTheme', state.theme);
-        });
+        const toggleBtn = document.getElementById('themeToggle');
+        if(toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                state.theme = state.theme === 'light' ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', state.theme);
+                icon.className = state.theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                localStorage.setItem('educaTheme', state.theme);
+            });
+        }
     }
 
     function addXP(amount, badgeId = null) {
@@ -44,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGamificationUI();
         updateLastAction(`Ganhou +${amount} XP`);
     }
-
     function updateGamificationUI() {
-        document.getElementById('miniScore').textContent = `${state.xp} XP`;
-                state.badges.forEach(id => {
+        const scoreEl = document.getElementById('miniScore');
+        if(scoreEl) scoreEl.textContent = `${state.xp} XP`;
+        
+        state.badges.forEach(id => {
             const el = document.getElementById(`badge-${id}`);
             if (el) el.classList.add('unlocked');
         });
@@ -67,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showNotification(text) {
-        // Cria um toast simples
         const toast = document.createElement('div');
         toast.style.cssText = `
             position: fixed; bottom: 20px; right: 20px;
@@ -86,17 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
         
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Fechar menu ao clicar em link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if(mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
             });
-        });
-        // Scroll Spy
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');                });
+            });
+        }
+
         window.addEventListener('scroll', () => {
             let current = '';
             document.querySelectorAll('section').forEach(section => {
@@ -132,12 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Funções Globais para os botões do Canvas HTML
     window.addHtmlElement = (type) => {
         const canvas = document.getElementById('htmlCanvas');
+        if(!canvas) return;
+        
+        // Limpa placeholder se existir
+        const placeholder = canvas.querySelector('.placeholder-box');
+        if(placeholder) placeholder.remove();
+
         const el = document.createElement(type === 'img' ? 'div' : type);
         
         if (type === 'button') {
             el.className = 'btn-chip';
-            el.textContent = 'Botão Novo';
-            el.onclick = () => { alert('Funciona!'); addXP(5); };
+            el.textContent = 'Botão Novo';            el.onclick = () => { alert('Funciona!'); addXP(5); };
         } else if (type === 'input') {
             el.type = 'text';
             el.placeholder = 'Digite algo...';
@@ -145,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.borderRadius = '4px';
             el.style.border = '1px solid #ccc';
         } else if (type === 'img') {
-            el.style.width = '50px';            el.style.height = '50px';
+            el.style.width = '50px';
+            el.style.height = '50px';
             el.style.background = '#ddd';
             el.innerHTML = '<i class="fas fa-image" style="line-height:50px; color:#666"></i>';
         }
@@ -155,7 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.clearHtmlCanvas = () => {
-        document.getElementById('htmlCanvas').innerHTML = '<div class="placeholder-box">Elementos aparecerão aqui...</div>';
+        const canvas = document.getElementById('htmlCanvas');
+        if(canvas) canvas.innerHTML = '<div class="placeholder-box" style="color:#999; width:100%; text-align:center;">Elementos aparecerão aqui...</div>';
     };
 
     // --- Seção CSS ---
@@ -166,6 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const rotateInput = document.getElementById('rotateInput');
         const codeOutput = document.getElementById('cssCodeOutput');
         
+        if(!target) return;
+
         function updateStyles() {
             const r = radiusInput.value;
             const s = shadowInput.value;
@@ -175,13 +187,14 @@ document.addEventListener('DOMContentLoaded', () => {
             target.style.boxShadow = `${s}px ${s}px ${s*2}px rgba(0,0,0,0.2)`;
             target.style.transform = `rotate(${rot}deg)`;
             
-            codeOutput.innerHTML = `border-radius: ${r}px;<br>box-shadow: ${s}px ${s}px ${s*2}px rgba(0,0,0,0.2);<br>transform: rotate(${rot}deg);`;
+            if(codeOutput) {
+                codeOutput.innerHTML = `border-radius: ${r}px;<br>box-shadow: ${s}px ${s}px ${s*2}px rgba(0,0,0,0.2);<br>transform: rotate(${rot}deg);`;
+            }
         }
 
         [radiusInput, shadowInput, rotateInput].forEach(input => {
-            input.addEventListener('input', () => {
-                updateStyles();
-                addXP(1); // XP incremental pequeno
+            if(input) input.addEventListener('input', () => {
+                updateStyles();                addXP(1); 
             });
         });
 
@@ -192,9 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Badge trigger simples
-        radiusInput.addEventListener('change', () => addXP(10, 'css'));
+        if(radiusInput) radiusInput.addEventListener('change', () => addXP(10, 'css'));
     }
+
     // --- Seção JS ---
     function setupJSSection() {
         // Calculadora
@@ -230,8 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const li = document.createElement('li');
                     li.innerHTML = `${val} <span class="del"><i class="fas fa-trash"></i></span>`;
                     li.querySelector('.del').onclick = function() {
-                        li.remove();
-                        addXP(2);
+                        li.remove();                        addXP(2);
                     };
                     todoList.appendChild(li);
                     todoInput.value = '';
@@ -243,7 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Console
         const logBtn = document.getElementById('logMessageBtn');
         const clearBtn = document.getElementById('clearConsoleBtn');
-        const screen = document.getElementById('consoleOutput');        
+        const screen = document.getElementById('consoleOutput');
+        
         if(logBtn) {
             logBtn.addEventListener('click', () => {
                 const msgs = ['Hello World', 'System OK', 'Loading...', 'Error 404', 'Success!'];
@@ -258,8 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Badge Trigger
-        calcBtn.addEventListener('click', () => addXP(15, 'js'));
+        if(calcBtn) calcBtn.addEventListener('click', () => addXP(15, 'js'));
     }
 
     // --- Playground (Editor de Código) ---
@@ -268,6 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const contents = document.querySelectorAll('.tab-content');
         const runBtn = document.getElementById('runCodeBtn');
         const iframe = document.getElementById('previewFrame');
+
+        if(!runBtn) return;
 
         // Tab Switching
         tabs.forEach(tab => {
@@ -279,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
             });
         });
-
         // Run Code Logic
         runBtn.addEventListener('click', () => {
             const html = document.getElementById('codeHtml').value;
@@ -290,10 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             iframe.srcdoc = combinedCode;
             
-            addXP(20, 'dev'); // Grande XP por usar o editor
+            addXP(20, 'dev');
             showNotification("Código executado com sucesso!");
-        });        
+        });
+        
         // Auto-run inicial
-        runBtn.click();
+        setTimeout(() => runBtn.click(), 500);
     }
 });
