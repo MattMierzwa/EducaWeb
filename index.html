@@ -3,33 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EducaWeb - Aprenda HTML, CSS e JS na Prática</title>
+    <title>EducaWeb 2.0 - Domine o Frontend</title>
+    <!-- Fonte Moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body data-theme="light">
-    <!-- Navegação -->
+    
+    <!-- Navegação Glassmorphism -->
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="logo">Educa<span>Web</span></h1>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Início</a></li>
-                <li><a href="#html" class="nav-link">HTML</a></li>
-                <li><a href="#css" class="nav-link">CSS</a></li>
-                <li><a href="#javascript" class="nav-link">JavaScript</a></li>
-                <li><a href="#pratica" class="nav-link">Prática</a></li>
+            <div class="logo-wrapper">
+                <i class="fas fa-code logo-icon"></i>
+                <h1 class="logo">Educa<span>Web</span></h1>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link active">Início</a></li>
+                <li><a href="#html" class="nav-link"><i class="fab fa-html5"></i> HTML</a></li>
+                <li><a href="#css" class="nav-link"><i class="fab fa-css3-alt"></i> CSS</a></li>
+                <li><a href="#javascript" class="nav-link"><i class="fab fa-js"></i> JS</a></li>
+                <li><a href="#playground" class="nav-link highlight-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
             </ul>
-            <button id="themeToggle" class="theme-toggle">🌙</button>
+            
+            <div class="nav-actions">
+                <div class="gamification-mini">
+                    <span id="miniScore">0 XP</span>
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Alternar Tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section com Partículas/Fundo Animado -->
     <header id="inicio" class="hero">
-        <div class="hero-content">
-            <h2>Aprenda Programação Web de Verdade</h2>
-            <p>Entenda a teoria e pratique com exemplos interativos de HTML, CSS e JavaScript</p>
-            <div class="hero-buttons">
-                <a href="#html" class="btn btn-primary">Começar com HTML</a>
-                <a href="#pratica" class="btn btn-secondary">Área Prática</a>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">            <div class="hero-text fade-in-up">
+                <span class="badge-new">Versão 2.0</span>
+                <h2>Aprenda a Criar o <br><span class="gradient-text">Futuro da Web</span></h2>
+                <p>Uma jornada interativa do zero ao domínio. Entenda a estrutura, estilize com arte e dê vida com lógica.</p>
+                <div class="hero-buttons">
+                    <a href="#html" class="btn btn-primary glow-effect">Começar Jornada <i class="fas fa-arrow-right"></i></a>
+                    <a href="#playground" class="btn btn-outline">Ir para o Editor</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in-up delay-1">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="window-body">
+                        <pre><code><span class="tag"><h1></span>Olá Mundo<span class="tag"></h1></span>
+<span class="tag"><style></span>
+  h1 { color: <span class="val">#6C63FF</span>; }
+<span class="tag"></style></span>
+<span class="tag"><script></span>
+  console.log(<span class="str">'Vamos codar!'</span>);
+<span class="tag"></script></span></code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -37,117 +80,103 @@
     <!-- Seção HTML -->
     <section id="html" class="section">
         <div class="container">
-            <h2 class="section-title">📘 HTML - Linguagem de Marcação de Hipertexto</h2>
-            
-            <div class="theory-card">
-                <h3>O que é HTML?</h3>
-                <p>HTML (HyperText Markup Language) é a linguagem padrão para criar páginas web. Ele descreve a <strong>estrutura</strong> do conteúdo usando "marcações" (tags). Pense no HTML como o <strong>esqueleto</strong> de um site.</p>
-                
-                <div class="theory-grid">
-                    <div class="theory-item">
-                        <h4>🔹 Tags</h4>
-                        <p>Elementos que definem o conteúdo. Ex: <code>&lt;h1&gt;Título&lt;/h1&gt;</code></p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 Atributos</h4>
-                        <p>Propriedades que modificam as tags. Ex: <code>&lt;img src="foto.jpg"&gt;</code></p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 Estrutura</h4>
-                        <p>Documento HTML tem <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> e <code>&lt;body&gt;</code></p>
-                    </div>
-                </div>
+            <div class="section-header">
+                <div class="icon-box html-color"><i class="fab fa-html5"></i></div>
+                <h2>A Estrutura (HTML)</h2>
+                <p>O esqueleto de tudo o que você vê na internet.</p>
             </div>
             
-            <div class="practice-demo">
-                <h3>🎯 Exemplo Prático de HTML</h3>
-                <div class="html-demo">
-                    <div class="code-display">
-                        <h4>Código HTML:</h4>
-                        <pre id="htmlCodeExample">&lt;div class="card"&gt;
-    &lt;h3&gt;💡 Card de Exemplo&lt;/h3&gt;
-    &lt;p&gt;Este é um parágrafo dentro de um card&lt;/p&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Item 1 da lista&lt;/li&gt;
-        &lt;li&gt;Item 2 da lista&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;</pre>
-                        <button class="btn-copy" data-copy="htmlCodeExample">📋 Copiar código</button>
-                    </div>
-                    <div class="result-display">
-                        <h4>Resultado Renderizado:</h4>
-                        <div class="card">
-                            <h3>💡 Card de Exemplo</h3>
-                            <p>Este é um parágrafo dentro de um card</p>
-                            <ul>
-                                <li>Item 1 da lista</li>
-                                <li>Item 2 da lista</li>
-                            </ul>
+            <div class="grid-2-col">
+                <div class="card theory-card slide-in-left">
+                    <h3>Conceitos Fundamentais</h3>
+                    <ul class="concept-list">
+                        <li>
+                            <strong>Tags Semânticas:</strong> Use <code><header></code>, <code><article></code> para significado.
+                        </li>
+                        <li>
+                            <strong>Atributos:</strong> Dados extras como <code>src</code>, <code>href</code>, <code>class</code>.
+                        </li>
+                        <li>                            <strong>DOM Tree:</strong> O HTML é organizado como uma árvore genealógica de elementos.
+                        </li>
+                    </ul>
+                    <div class="interactive-task">
+                        <p>Tarefa: Clique abaixo para revelar a estrutura oculta.</p>
+                        <button id="revealHtmlBtn" class="btn btn-small btn-html">Revelar Estrutura</button>
+                        <div id="htmlHiddenContent" class="hidden-content" style="display:none;">
+                            <pre><!DOCTYPE html>
+<html>
+  <body>
+    <!-- Conteúdo visível aqui -->
+  </body>
+</html></pre>
                         </div>
                     </div>
                 </div>
-                <p class="demo-note">✅ O HTML define a estrutura - o que você vê acima é o resultado direto do código HTML ao lado.</p>
+
+                <div class="card demo-card slide-in-right">
+                    <div class="demo-header">
+                        <span>Visualização</span>
+                        <span class="badge">Ao Vivo</span>
+                    </div>
+                    <div class="demo-canvas" id="htmlCanvas">
+                        <!-- Elementos serão inseridos via JS -->
+                        <div class="placeholder-box">Elementos aparecerão aqui...</div>
+                    </div>
+                    <div class="controls">
+                        <button class="btn-chip" onclick="addHtmlElement('button')">+ Botão</button>
+                        <button class="btn-chip" onclick="addHtmlElement('input')">+ Input</button>
+                        <button class="btn-chip" onclick="addHtmlElement('img')">+ Imagem</button>
+                        <button class="btn-chip danger" onclick="clearHtmlCanvas()">Limpar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Seção CSS -->
-    <section id="css" class="section bg-light">
+    <section id="css" class="section bg-alt">
         <div class="container">
-            <h2 class="section-title">🎨 CSS - Folhas de Estilo em Cascata</h2>
-            
-            <div class="theory-card">
-                <h3>O que é CSS?</h3>
-                <p>CSS (Cascading Style Sheets) é a linguagem usada para <strong>estilizar</strong> o HTML. Enquanto o HTML é o esqueleto, o CSS é a <strong>aparência</strong> - define cores, tamanhos, fontes e posicionamento.</p>
-                
-                <div class="theory-grid">
-                    <div class="theory-item">
-                        <h4>🔹 Seletores</h4>
-                        <p>Identificam quais elementos estilizar. Ex: <code>p</code>, <code>.classe</code>, <code>#id</code></p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 Propriedades</h4>
-                        <p>Características que você altera. Ex: <code>color</code>, <code>background</code></p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 Cascata</h4>
-                        <p>A ordem das regras importa - estilos podem ser herdados</p>
-                    </div>
-                </div>
+            <div class="section-header">
+                <div class="icon-box css-color"><i class="fab fa-css3-alt"></i></div>
+                <h2>O Estilo (CSS)</h2>
+                <p>Dê vida, cor e movimento à estrutura bruta.</p>
             </div>
-            
-            <div class="practice-demo">
-                <h3>🎯 Exemplo Prático de CSS</h3>
-                <div class="css-demo">
-                    <div class="demo-box" id="styleBox">
-                        <p id="boxText">Elemento sem estilo</p>
+
+            <div class="css-playground card">
+                <div class="playground-layout">
+                    <div class="controls-panel">
+                        <h3>Laboratório de Estilos</h3>                        <div class="control-group">
+                            <label>Border Radius</label>
+                            <input type="range" id="radiusInput" min="0" max="50" value="8">
+                        </div>
+                        <div class="control-group">
+                            <label>Sombra (Box Shadow)</label>
+                            <input type="range" id="shadowInput" min="0" max="50" value="10">
+                        </div>
+                        <div class="control-group">
+                            <label>Rotação</label>
+                            <input type="range" id="rotateInput" min="0" max="360" value="0">
+                        </div>
+                        <div class="control-group">
+                            <label>Cor de Fundo</label>
+                            <div class="color-presets">
+                                <button class="color-dot" style="background:#ff6b6b" data-color="#ff6b6b"></button>
+                                <button class="color-dot" style="background:#4ecdc4" data-color="#4ecdc4"></button>
+                                <button class="color-dot" style="background:#ffe66d" data-color="#ffe66d"></button>
+                                <button class="color-dot" style="background:#1a535c" data-color="#1a535c"></button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <button class="btn btn-secondary" id="applyStyleBtn">Aplicar estilo CSS</button>
-                    <p class="style-info" id="styleInfo">Clique no botão para ver o CSS em ação</p>
-                    
-                    <div class="color-picker-container">
-                        <label>🎨 Escolha uma cor:</label>
-                        <input type="color" id="customColorPicker" value="#667eea">
-                        <button id="applyColorBtn" class="btn-small">Aplicar cor</button>
-                    </div>
-                    
-                    <div class="size-slider-container">
-                        <label>📏 Ajustar tamanho:</label>
-                        <input type="range" id="sizeSlider" min="100" max="300" value="200" step="10">
-                        <span id="sizeValue">200px</span>
-                    </div>
-                    
-                    <div class="css-code-hint">
-                        <h4>CSS aplicado:</h4>
-                        <pre id="cssCodeDisplay">{
-    background: #e0e0e0;
-    color: #333;
-    border: 2px solid #ccc;
-}</pre>
+                    <div class="preview-panel">
+                        <div id="cssTargetBox" class="target-box">
+                            Eu mudo!
+                        </div>
+                        <div class="code-output">
+                            <code id="cssCodeOutput">border-radius: 8px;</code>
+                        </div>
                     </div>
                 </div>
-                <p class="demo-note">✅ O CSS transforma a aparência - observe como o elemento muda quando você aplica os estilos.</p>
             </div>
         </div>
     </section>
@@ -155,181 +184,153 @@
     <!-- Seção JavaScript -->
     <section id="javascript" class="section">
         <div class="container">
-            <h2 class="section-title">⚡ JavaScript - A Linguagem da Interatividade</h2>
-            
-            <div class="theory-card">
-                <h3>O que é JavaScript?</h3>
-                <p>JavaScript é a linguagem de programação que adiciona <strong>comportamento e interatividade</strong> às páginas web. Se HTML é o esqueleto e CSS é a aparência, JavaScript são os <strong>músculos</strong> - faz o site responder a cliques e interagir com o usuário.</p>
-                
-                <div class="theory-grid">
-                    <div class="theory-item">
-                        <h4>🔹 Eventos</h4>
-                        <p>Ações do usuário: <code>click</code>, <code>mouseover</code></p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 DOM</h4>
-                        <p>Manipulação dos elementos HTML via JavaScript</p>
-                    </div>
-                    <div class="theory-item">
-                        <h4>🔹 Funções</h4>
-                        <p>Blocos de código que executam tarefas específicas</p>
-                    </div>
-                </div>
+            <div class="section-header">
+                <div class="icon-box js-color"><i class="fab fa-js"></i></div>
+                <h2>A Lógica (JavaScript)</h2>
+                <p>O cérebro que torna o site inteligente e interativo.</p>
             </div>
-            
-            <div class="practice-demo">
-                <h3>🎯 Exemplos Práticos de JavaScript</h3>
-                <div class="js-demo">
-                    <div class="js-card">
-                        <h3>📝 Manipular Texto</h3>
-                        <p id="changeableText">Texto original</p>
-                        <button class="btn btn-small" id="changeTextBtn">Mudar texto</button>
-                        <small>JavaScript altera o conteúdo</small>
-                    </div>
-                    
-                    <div class="js-card">
-                        <h3>⚠️ Alertas</h3>
-                        <p>Exibe uma caixa de diálogo</p>
-                        <button class="btn btn-small" id="alertBtn">Mostrar alerta</button>
-                        <small>window.alert() do JavaScript</small>
-                    </div>
-                    
-                    <div class="js-card">
-                        <h3>🔢 Contador</h3>
-                        <p>Contagem: <strong id="counter">0</strong></p>
-                        <button class="btn btn-small" id="counterBtn">+1</button>
-                        <small>Variáveis e eventos de clique</small>
-                    </div>
-                </div>
-                
-                <div class="calculator-demo">
-                    <h4>🧮 Mini Calculadora JavaScript</h4>
-                    <div class="calculator">
-                        <input type="number" id="calcNum1" placeholder="Número 1" value="5">
-                        <select id="calcOperator">
-                            <option value="+">+ Soma</option>
-                            <option value="-">- Subtração</option>
-                            <option value="*">× Multiplicação</option>
-                            <option value="/">÷ Divisão</option>
+
+            <div class="grid-3-col">
+                <div class="card js-card">
+                    <h4><i class="fas fa-calculator"></i> Calculadora Dinâmica</h4>
+                    <div class="calc-interface">
+                        <input type="number" id="jsNum1" placeholder="0">                        <select id="jsOp">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">×</option>
+                            <option value="/">÷</option>
                         </select>
-                        <input type="number" id="calcNum2" placeholder="Número 2" value="3">
-                        <button id="calcBtn" class="btn-small">Calcular</button>
-                        <p id="calcResult">Resultado: 8</p>
+                        <input type="number" id="jsNum2" placeholder="0">
+                        <button id="jsCalcBtn" class="btn-full">Calcular</button>
+                        <div id="jsResult" class="result-display">Resultado: --</div>
                     </div>
                 </div>
-                
-                <p class="demo-note">✅ JavaScript reage a ações - todos os botões acima são controlados por código JavaScript.</p>
+
+                <div class="card js-card">
+                    <h4><i class="fas fa-list-check"></i> Lista de Tarefas</h4>
+                    <div class="todo-interface">
+                        <div class="input-group">
+                            <input type="text" id="todoInput" placeholder="Nova tarefa...">
+                            <button id="addTodoBtn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <ul id="todoList" class="simple-list">
+                            <!-- Itens via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card js-card">
+                    <h4><i class="fas fa-terminal"></i> Console Interativo</h4>
+                    <div class="console-interface">
+                        <div id="consoleOutput" class="console-screen">
+                            > Sistema pronto...<br>
+                        </div>
+                        <button id="logMessageBtn" class="btn-small">Logar Mensagem</button>
+                        <button id="clearConsoleBtn" class="btn-small outline">Limpar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Prática -->
-    <section id="pratica" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">🧪 Área Prática - Combine Tudo!</h2>
-            
-            <div class="progress-container">
-                <div class="progress-info">
-                    <span>📊 Progresso de Aprendizado</span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div id="progressFill" class="progress-fill"></div>
-                </div>
-                <p id="progressMessage" class="progress-message">Clique nos botões para progredir!</p>
+    <!-- Área Prática Avançada (Playground) -->
+    <section id="playground" class="section playground-section">
+        <div class="container full-width">
+            <div class="section-header center">
+                <h2><i class="fas fa-laptop-code"></i> Playground Integrado</h2>
+                <p>Combine HTML, CSS e JS e veja o resultado instantaneamente.</p>
             </div>
-            
-            <div class="theory-card">
-                <h3>Como HTML, CSS e JavaScript trabalham juntos?</h3>
-                <p>Os três formam a base do desenvolvimento web moderno:</p>
+
+            <div class="editor-container glass-panel">
+                <div class="editor-sidebar">
+                    <div class="tabs">                        <button class="tab-btn active" data-tab="html">HTML</button>
+                        <button class="tab-btn" data-tab="css">CSS</button>
+                        <button class="tab-btn" data-tab="js">JS</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="tab-html">
+                        <textarea id="codeHtml" spellcheck="false"><div class="box">
+  <h2>Olá!</h2>
+  <p>Edite este texto.</p>
+  <button id="btn">Clique-me</button>
+</div></textarea>
+                    </div>
+                    <div class="tab-content" id="tab-css">
+                        <textarea id="codeCss" spellcheck="false">.box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: sans-serif;
+}
+button {
+  background: #6C63FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}</textarea>
+                    </div>
+                    <div class="tab-content" id="tab-js">
+                        <textarea id="codeJs" spellcheck="false">const btn = document.getElementById('btn');
+btn.addEventListener('click', () => {
+  btn.style.background = '#'+Math.floor(Math.random()*16777215).toString(16);
+  btn.innerText = 'Mudei de cor!';
+});</textarea>
+                    </div>
+                    
+                    <button id="runCodeBtn" class="btn-run"><i class="fas fa-play"></i> Executar Código</button>
+                </div>
                 
-                <div class="theory-grid">
-                    <div class="theory-item highlight-html">
-                        <h4>📘 HTML</h4>
-                        <p>Cria a estrutura dos elementos (inputs, botões, textos)</p>
-                    </div>
-                    <div class="theory-item highlight-css">
-                        <h4>🎨 CSS</h4>
-                        <p>Estiliza a aparência (cores, tamanhos, animações)</p>
-                    </div>
-                    <div class="theory-item highlight-js">
-                        <h4>⚡ JavaScript</h4>
-                        <p>Adiciona interatividade (responder a cliques, processar dados)</p>
-                    </div>
+                <div class="editor-preview">
+                    <iframe id="previewFrame"></iframe>
                 </div>
             </div>
-            
-            <div class="practice-demo">
-                <h3>🎯 Exercite seus conhecimentos</h3>
-                <div class="practice-area">
-                    <div class="practice-card">
-                        <h3>📝 Saudação personalizada</h3>
-                        <input type="text" id="nameInput" placeholder="Digite seu nome" class="practice-input">
-                        <button class="btn btn-primary" id="greetBtn">Dizer olá</button>
-                        <div id="greetingMessage" class="result-box"></div>
-                    </div>
-                    
-                    <div class="practice-card">
-                        <h3>🎨 Mudar cor de fundo</h3>
-                        <button class="btn btn-primary" id="changeColorBtn">Mudar cor da seção</button>
-                        <p id="colorFeedback">Clique para ver JavaScript manipulando CSS</p>
-                    </div>
-                    
-                    <div class="practice-card">
-                        <h3>📊 Resultados</h3>
-                        <div id="practiceResult" class="result-box">
-                            <p>Aguardando interação...</p>
-                        </div>
-                        <button id="resetProgressBtn" class="btn-small" style="margin-top: 1rem;">🔄 Resetar Progresso</button>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Gamificação e Footer -->
+    <section class="achievements-section">
+        <div class="container">
+            <h3>🏆 Suas Conquistas</h3>            <div class="badges-grid" id="badgesContainer">
+                <div class="badge locked" id="badge-html" title="Explorador HTML">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML Master</span>
                 </div>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>📝 Quiz Rápido - Teste seu conhecimento!</h3>
-                <div class="quiz-question">
-                    <p><strong>1. Qual linguagem define a estrutura de uma página web?</strong></p>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="css"> CSS</label>
-                        <label><input type="radio" name="q1" value="js"> JavaScript</label>
-                        <label><input type="radio" name="q1" value="html"> HTML</label>
-                    </div>
+                <div class="badge locked" id="badge-css" title="Artista CSS">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS Artist</span>
                 </div>
-                <div class="quiz-question">
-                    <p><strong>2. Qual linguagem é usada para estilizar elementos?</strong></p>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="css"> CSS</label>
-                        <label><input type="radio" name="q2" value="js"> JavaScript</label>
-                        <label><input type="radio" name="q2" value="html"> HTML</label>
-                    </div>
+                <div class="badge locked" id="badge-js" title="Lógico JS">
+                    <i class="fab fa-js"></i>
+                    <span>JS Logic</span>
                 </div>
-                <div class="quiz-question">
-                    <p><strong>3. Qual linguagem adiciona interatividade?</strong></p>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="css"> CSS</label>
-                        <label><input type="radio" name="q3" value="js"> JavaScript</label>
-                        <label><input type="radio" name="q3" value="html"> HTML</label>
-                    </div>
+                <div class="badge locked" id="badge-dev" title="Desenvolvedor Fullstack">
+                    <i class="fas fa-rocket"></i>
+                    <span>Dev Complete</span>
                 </div>
-                <button id="checkQuizBtn" class="btn btn-primary">Verificar Respostas</button>
-                <p id="quizResult" class="quiz-result"></p>
-            </div>
-            
-            <div class="summary-box">
-                <h4>📌 Resumo do que você aprendeu:</h4>
-                <ul>
-                    <li><strong>HTML:</strong> Estrutura - criou os inputs, botões e textos desta página</li>
-                    <li><strong>CSS:</strong> Estilo - definiu cores, fontes, sombras e o layout bonito</li>
-                    <li><strong>JavaScript:</strong> Interatividade - todos os botões funcionam graças a ele</li>
-                </ul>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 EducaWeb - Aprenda HTML, CSS e JavaScript na prática</p>
-            <p id="lastInteraction" class="last-interaction"></p>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h4>EducaWeb</h4>
+                <p>Ensinando o futuro, uma linha de código por vez.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Sobre</a>
+                <a href="#">Recursos</a>
+                <a href="#">Comunidade</a>
+            </div>
+            <div class="footer-status">
+                <span id="statusIndicator">● Online</span>
+                <p id="lastAction">Aguardando interação...</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 EducaWeb Project. Feito com <i class="fas fa-heart" style="color: #ff6b6b;"></i> e código.
         </div>
     </footer>
 
