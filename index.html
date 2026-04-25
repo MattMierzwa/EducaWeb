@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EducaWeb 2.0 - Plataforma interativa para aprender HTML, CSS e JavaScript do zero ao domínio">
+    <meta name="theme-color" content="#6C63FF">
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     <title>EducaWeb 2.0 - Domine o Frontend</title>
     <!-- Fontes Google -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -12,51 +17,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="light">
-
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
     <!-- Navegação -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
         <div class="nav-container">
             <div class="logo-wrapper">
-                <i class="fas fa-code logo-icon"></i>
+                <i class="fas fa-code logo-icon" aria-hidden="true"></i>
                 <h1 class="logo">Educa<span>Web</span></h1>
             </div>
             
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio" class="nav-link active">Início</a></li>
-                <li><a href="#html" class="nav-link"><i class="fab fa-html5"></i> HTML</a></li>
-                <li><a href="#css" class="nav-link"><i class="fab fa-css3-alt"></i> CSS</a></li>
-                <li><a href="#javascript" class="nav-link"><i class="fab fa-js"></i> JS</a></li>
-                <li><a href="#playground" class="nav-link highlight-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="#inicio" class="nav-link active" role="menuitem">Início</a></li>
+                <li role="none"><a href="#html" class="nav-link" role="menuitem"><i class="fab fa-html5" aria-hidden="true"></i> HTML</a></li>
+                <li role="none"><a href="#css" class="nav-link" role="menuitem"><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS</a></li>
+                <li role="none"><a href="#javascript" class="nav-link" role="menuitem"><i class="fab fa-js" aria-hidden="true"></i> JS</a></li>
+                <li role="none"><a href="#playground" class="nav-link highlight-link" role="menuitem"><i class="fas fa-laptop-code" aria-hidden="true"></i> Playground</a></li>
             </ul>
             
             <div class="nav-actions">
-                <div class="gamification-mini">
+                <div class="gamification-mini" aria-live="polite" aria-label="Pontuação atual">
                     <span id="miniScore">0 XP</span>
-                    <i class="fas fa-trophy"></i>
+                    <i class="fas fa-trophy" aria-hidden="true"></i>
                 </div>
-                <button id="themeToggle" class="theme-toggle" aria-label="Alternar Tema">
-                    <i class="fas fa-moon"></i>
+                <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema claro/escuro">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </nav>
 
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+    
     <!-- Hero Section -->
-    <header id="inicio" class="hero">
-        <div class="container hero-content">            <div class="hero-text fade-in-up">
+    <header id="inicio" class="hero" role="banner">
+        <div class="container hero-content">
+            <div class="hero-text fade-in-up">
                 <span class="badge-new">Versão 2.0</span>
                 <h2>Aprenda a Criar o <br><span class="gradient-text">Futuro da Web</span></h2>
                 <p>Uma jornada interativa do zero ao domínio. Entenda a estrutura, estilize com arte e dê vida com lógica.</p>
                 <div class="hero-buttons">
-                    <a href="#html" class="btn btn-primary glow-effect">Começar Jornada <i class="fas fa-arrow-right"></i></a>
+                    <a href="#html" class="btn btn-primary glow-effect">Começar Jornada <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     <a href="#playground" class="btn btn-outline">Ir para o Editor</a>
                 </div>
             </div>
-            <div class="hero-visual fade-in-up delay-1">
+            <div class="hero-visual fade-in-up delay-1" aria-hidden="true">
                 <div class="code-window">
                     <div class="window-header">
                         <span class="dot red"></span>
@@ -64,13 +74,13 @@
                         <span class="dot green"></span>
                     </div>
                     <div class="window-body">
-                        <pre><code><span class="tag"><h1></span>Olá Mundo<span class="tag"></h1></span>
-<span class="tag"><style></span>
+                        <pre><code><span class="tag">&lt;h1&gt;</span>Olá Mundo<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;style&gt;</span>
   h1 { color: <span class="val">#6C63FF</span>; }
-<span class="tag"></style></span>
-<span class="tag"><script></span>
+<span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;script&gt;</span>
   console.log(<span class="str">'Vamos codar!'</span>);
-<span class="tag"></script></span></code></pre>
+<span class="tag">&lt;/script&gt;</span></code></pre>
                     </div>
                 </div>
             </div>
@@ -78,11 +88,11 @@
     </header>
 
     <!-- Seção HTML -->
-    <section id="html" class="section">
+    <section id="html" class="section" aria-labelledby="html-heading">
         <div class="container">
             <div class="section-header">
-                <div class="icon-box html-color"><i class="fab fa-html5"></i></div>
-                <h2>A Estrutura (HTML)</h2>
+                <div class="icon-box html-color"><i class="fab fa-html5" aria-hidden="true"></i></div>
+                <h2 id="html-heading">A Estrutura (HTML)</h2>
                 <p>O esqueleto de tudo o que você vê na internet.</p>
             </div>
             
@@ -90,19 +100,20 @@
                 <div class="card theory-card slide-in-left">
                     <h3>Conceitos Fundamentais</h3>
                     <ul class="concept-list">
-                        <li><strong>Tags Semânticas:</strong> Use <code><header></code>, <code><article></code> para significado.</li>
+                        <li><strong>Tags Semânticas:</strong> Use <code>&lt;header&gt;</code>, <code>&lt;article&gt;</code> para significado.</li>
                         <li><strong>Atributos:</strong> Dados extras como <code>src</code>, <code>href</code>, <code>class</code>.</li>
                         <li><strong>DOM Tree:</strong> O HTML é organizado como uma árvore genealógica.</li>
                     </ul>
                     <div class="interactive-task">
                         <p>Tarefa: Clique abaixo para revelar a estrutura oculta.</p>
-                        <button id="revealHtmlBtn" class="btn btn-small btn-html">Revelar Estrutura</button>                        <div id="htmlHiddenContent" class="hidden-content" style="display:none; margin-top:10px;">
-                            <pre style="background:#f4f4f4; padding:10px; border-radius:5px; color:#333;"><!DOCTYPE html>
-<html>
-  <body>
-    <!-- Conteúdo visível aqui -->
-  </body>
-</html></pre>
+                        <button id="revealHtmlBtn" class="btn btn-small btn-html" aria-expanded="false">Revelar Estrutura</button>
+                        <div id="htmlHiddenContent" class="hidden-content" style="display:none; margin-top:10px;" role="region" aria-label="Código HTML de exemplo">
+                            <pre style="background:#f4f4f4; padding:10px; border-radius:5px; color:#333;"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;!-- Conteúdo visível aqui --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
                         </div>
                     </div>
                 </div>
@@ -112,14 +123,14 @@
                         <span>Visualização</span>
                         <span class="badge">Ao Vivo</span>
                     </div>
-                    <div class="demo-canvas" id="htmlCanvas">
+                    <div class="demo-canvas" id="htmlCanvas" role="application" aria-label="Área de demonstração HTML">
                         <div class="placeholder-box" style="color:#999; width:100%; text-align:center;">Elementos aparecerão aqui...</div>
                     </div>
-                    <div class="controls">
-                        <button class="btn-chip" onclick="addHtmlElement('button')">+ Botão</button>
-                        <button class="btn-chip" onclick="addHtmlElement('input')">+ Input</button>
-                        <button class="btn-chip" onclick="addHtmlElement('img')">+ Imagem</button>
-                        <button class="btn-chip danger" onclick="clearHtmlCanvas()">Limpar</button>
+                    <div class="controls" role="group" aria-label="Controles de elementos HTML">
+                        <button class="btn-chip" onclick="addHtmlElement('button')" type="button">+ Botão</button>
+                        <button class="btn-chip" onclick="addHtmlElement('input')" type="button">+ Input</button>
+                        <button class="btn-chip" onclick="addHtmlElement('img')" type="button">+ Imagem</button>
+                        <button class="btn-chip danger" onclick="clearHtmlCanvas()" type="button">Limpar</button>
                     </div>
                 </div>
             </div>
@@ -127,11 +138,11 @@
     </section>
 
     <!-- Seção CSS -->
-    <section id="css" class="section bg-alt">
+    <section id="css" class="section bg-alt" aria-labelledby="css-heading">
         <div class="container">
             <div class="section-header">
-                <div class="icon-box css-color"><i class="fab fa-css3-alt"></i></div>
-                <h2>O Estilo (CSS)</h2>
+                <div class="icon-box css-color"><i class="fab fa-css3-alt" aria-hidden="true"></i></div>
+                <h2 id="css-heading">O Estilo (CSS)</h2>
                 <p>Dê vida, cor e movimento à estrutura bruta.</p>
             </div>
 
@@ -140,32 +151,36 @@
                     <div class="controls-panel">
                         <h3>Laboratório de Estilos</h3>
                         <div class="control-group">
-                            <label>Border Radius</label>
-                            <input type="range" id="radiusInput" min="0" max="50" value="8">
+                            <label for="radiusInput">Border Radius</label>
+                            <input type="range" id="radiusInput" min="0" max="50" value="8" aria-describedby="radiusValue">
+                            <span id="radiusValue" class="sr-only">8 pixels</span>
                         </div>
                         <div class="control-group">
-                            <label>Sombra (Box Shadow)</label>
-                            <input type="range" id="shadowInput" min="0" max="50" value="10">                        </div>
+                            <label for="shadowInput">Sombra (Box Shadow)</label>
+                            <input type="range" id="shadowInput" min="0" max="50" value="10" aria-describedby="shadowValue">
+                            <span id="shadowValue" class="sr-only">10 pixels</span>
+                        </div>
                         <div class="control-group">
-                            <label>Rotação</label>
-                            <input type="range" id="rotateInput" min="0" max="360" value="0">
+                            <label for="rotateInput">Rotação</label>
+                            <input type="range" id="rotateInput" min="0" max="360" value="0" aria-describedby="rotateValue">
+                            <span id="rotateValue" class="sr-only">0 graus</span>
                         </div>
                         <div class="control-group">
                             <label>Cor de Fundo</label>
-                            <div class="color-presets">
-                                <button class="color-dot" style="background:#ff6b6b" data-color="#ff6b6b"></button>
-                                <button class="color-dot" style="background:#4ecdc4" data-color="#4ecdc4"></button>
-                                <button class="color-dot" style="background:#ffe66d" data-color="#ffe66d"></button>
-                                <button class="color-dot" style="background:#1a535c" data-color="#1a535c"></button>
+                            <div class="color-presets" role="group" aria-label="Seleção de cores">
+                                <button class="color-dot" style="background:#ff6b6b" data-color="#ff6b6b" aria-label="Vermelho claro" type="button"></button>
+                                <button class="color-dot" style="background:#4ecdc4" data-color="#4ecdc4" aria-label="Turquesa" type="button"></button>
+                                <button class="color-dot" style="background:#ffe66d" data-color="#ffe66d" aria-label="Amarelo" type="button"></button>
+                                <button class="color-dot" style="background:#1a535c" data-color="#1a535c" aria-label="Verde escuro" type="button"></button>
                             </div>
                         </div>
                     </div>
                     
                     <div class="preview-panel">
-                        <div id="cssTargetBox" class="target-box">
+                        <div id="cssTargetBox" class="target-box" role="img" aria-label="Caixa demonstrativa que muda de estilo">
                             Eu mudo!
                         </div>
-                        <div class="code-output">
+                        <div class="code-output" aria-live="polite">
                             <code id="cssCodeOutput">border-radius: 8px;</code>
                         </div>
                     </div>
@@ -175,51 +190,56 @@
     </section>
 
     <!-- Seção JavaScript -->
-    <section id="javascript" class="section">
+    <section id="javascript" class="section" aria-labelledby="js-heading">
         <div class="container">
             <div class="section-header">
-                <div class="icon-box js-color"><i class="fab fa-js"></i></div>
-                <h2>A Lógica (JavaScript)</h2>
+                <div class="icon-box js-color"><i class="fab fa-js" aria-hidden="true"></i></div>
+                <h2 id="js-heading">A Lógica (JavaScript)</h2>
                 <p>O cérebro que torna o site inteligente e interativo.</p>
             </div>
 
             <div class="grid-3-col">
                 <div class="card js-card">
-                    <h4><i class="fas fa-calculator"></i> Calculadora Dinâmica</h4>
+                    <h4><i class="fas fa-calculator" aria-hidden="true"></i> Calculadora Dinâmica</h4>
                     <div class="calc-interface">
-                        <input type="number" id="jsNum1" placeholder="0">
-                        <select id="jsOp">
+                        <label for="jsNum1" class="sr-only">Primeiro número</label>
+                        <input type="number" id="jsNum1" placeholder="0" aria-label="Primeiro número">
+                        <label for="jsOp" class="sr-only">Operação</label>
+                        <select id="jsOp" aria-label="Operação matemática">
                             <option value="+">+</option>
                             <option value="-">-</option>
                             <option value="*">×</option>
                             <option value="/">÷</option>
                         </select>
-                        <input type="number" id="jsNum2" placeholder="0">                        <button id="jsCalcBtn" class="btn-full">Calcular</button>
-                        <div id="jsResult" class="result-display">Resultado: --</div>
+                        <label for="jsNum2" class="sr-only">Segundo número</label>
+                        <input type="number" id="jsNum2" placeholder="0" aria-label="Segundo número">
+                        <button id="jsCalcBtn" class="btn-full" type="button">Calcular</button>
+                        <div id="jsResult" class="result-display" aria-live="polite" aria-atomic="true">Resultado: --</div>
                     </div>
                 </div>
 
                 <div class="card js-card">
-                    <h4><i class="fas fa-list-check"></i> Lista de Tarefas</h4>
+                    <h4><i class="fas fa-list-check" aria-hidden="true"></i> Lista de Tarefas</h4>
                     <div class="todo-interface">
                         <div class="input-group">
-                            <input type="text" id="todoInput" placeholder="Nova tarefa...">
-                            <button id="addTodoBtn"><i class="fas fa-plus"></i></button>
+                            <label for="todoInput" class="sr-only">Nova tarefa</label>
+                            <input type="text" id="todoInput" placeholder="Nova tarefa..." aria-label="Descrição da nova tarefa">
+                            <button id="addTodoBtn" type="button" aria-label="Adicionar tarefa"><i class="fas fa-plus" aria-hidden="true"></i></button>
                         </div>
-                        <ul id="todoList" class="simple-list">
+                        <ul id="todoList" class="simple-list" role="list" aria-label="Lista de tarefas">
                             <!-- Itens via JS -->
                         </ul>
                     </div>
                 </div>
 
                 <div class="card js-card">
-                    <h4><i class="fas fa-terminal"></i> Console Interativo</h4>
+                    <h4><i class="fas fa-terminal" aria-hidden="true"></i> Console Interativo</h4>
                     <div class="console-interface">
-                        <div id="consoleOutput" class="console-screen">
+                        <div id="consoleOutput" class="console-screen" role="log" aria-live="polite" aria-label="Saída do console">
                             > Sistema pronto...<br>
                         </div>
-                        <button id="logMessageBtn" class="btn-small">Logar Mensagem</button>
-                        <button id="clearConsoleBtn" class="btn-small outline">Limpar</button>
+                        <button id="logMessageBtn" class="btn-small" type="button">Logar Mensagem</button>
+                        <button id="clearConsoleBtn" class="btn-small outline" type="button">Limpar</button>
                     </div>
                 </div>
             </div>
@@ -227,29 +247,31 @@
     </section>
 
     <!-- Área Prática Avançada (Playground) -->
-    <section id="playground" class="section playground-section">
+    <section id="playground" class="section playground-section" aria-labelledby="playground-heading">
         <div class="container full-width">
             <div class="section-header center">
-                <h2><i class="fas fa-laptop-code"></i> Playground Integrado</h2>
+                <h2 id="playground-heading"><i class="fas fa-laptop-code" aria-hidden="true"></i> Playground Integrado</h2>
                 <p>Combine HTML, CSS e JS e veja o resultado instantaneamente.</p>
             </div>
 
             <div class="editor-container glass-panel">
                 <div class="editor-sidebar">
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="html">HTML</button>
-                        <button class="tab-btn" data-tab="css">CSS</button>
-                        <button class="tab-btn" data-tab="js">JS</button>
+                    <div class="tabs" role="tablist" aria-label="Abas de código">
+                        <button class="tab-btn active" data-tab="html" role="tab" aria-selected="true" aria-controls="tab-html" id="html-tab" type="button">HTML</button>
+                        <button class="tab-btn" data-tab="css" role="tab" aria-selected="false" aria-controls="tab-css" id="css-tab" type="button">CSS</button>
+                        <button class="tab-btn" data-tab="js" role="tab" aria-selected="false" aria-controls="tab-js" id="js-tab" type="button">JS</button>
                     </div>
                     
-                    <div class="tab-content active" id="tab-html">
-                        <textarea id="codeHtml" spellcheck="false"><div class="box">  <h2>Olá!</h2>
-  <p>Edite este texto.</p>
-  <button id="btn">Clique-me</button>
-</div></textarea>
+                    <div class="tab-content active" id="tab-html" role="tabpanel" aria-labelledby="html-tab">
+                        <label for="codeHtml" class="sr-only">Editor de HTML</label>
+                        <textarea id="codeHtml" spellcheck="false" aria-label="Código HTML">&lt;div class="box"&gt;  &lt;h2&gt;Olá!&lt;/h2&gt;
+  &lt;p&gt;Edite este texto.&lt;/p&gt;
+  &lt;button id="btn"&gt;Clique-me&lt;/button&gt;
+&lt;/div&gt;</textarea>
                     </div>
-                    <div class="tab-content" id="tab-css">
-                        <textarea id="codeCss" spellcheck="false">.box {
+                    <div class="tab-content" id="tab-css" role="tabpanel" aria-labelledby="css-tab" hidden>
+                        <label for="codeCss" class="sr-only">Editor de CSS</label>
+                        <textarea id="codeCss" spellcheck="false" aria-label="Código CSS">.box {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -264,63 +286,72 @@ button {
   cursor: pointer;
 }</textarea>
                     </div>
-                    <div class="tab-content" id="tab-js">
-                        <textarea id="codeJs" spellcheck="false">const btn = document.getElementById('btn');
+                    <div class="tab-content" id="tab-js" role="tabpanel" aria-labelledby="js-tab" hidden>
+                        <label for="codeJs" class="sr-only">Editor de JavaScript</label>
+                        <textarea id="codeJs" spellcheck="false" aria-label="Código JavaScript">const btn = document.getElementById('btn');
 btn.addEventListener('click', () => {
   btn.style.background = '#'+Math.floor(Math.random()*16777215).toString(16);
   btn.innerText = 'Mudei de cor!';
 });</textarea>
                     </div>
                     
-                    <button id="runCodeBtn" class="btn-run"><i class="fas fa-play"></i> Executar Código</button>
+                    <button id="runCodeBtn" class="btn-run" type="button" aria-label="Executar código"><i class="fas fa-play" aria-hidden="true"></i> Executar Código</button>
+                    <button id="exportCodeBtn" class="btn-export" type="button" aria-label="Exportar código"><i class="fas fa-download" aria-hidden="true"></i> Exportar</button>
                 </div>
                 
                 <div class="editor-preview">
-                    <iframe id="previewFrame"></iframe>
+                    <iframe id="previewFrame" title="Pré-visualização do código" loading="lazy" sandbox="allow-scripts"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gamificação e Footer -->
-    <section class="achievements-section">
+    <section class="achievements-section" aria-labelledby="achievements-heading">
         <div class="container">
-            <h3>🏆 Suas Conquistas</h3>
-            <div class="badges-grid" id="badgesContainer">
-                <div class="badge locked" id="badge-html" title="Explorador HTML">
-                    <i class="fab fa-html5"></i>
+            <h3 id="achievements-heading">🏆 Suas Conquistas</h3>
+            <div class="badges-grid" id="badgesContainer" role="list" aria-label="Conquistas disponíveis">
+                <div class="badge locked" id="badge-html" title="Explorador HTML" role="listitem" aria-describedby="badge-html-desc">
+                    <i class="fab fa-html5" aria-hidden="true"></i>
                     <span>HTML Master</span>
+                    <span id="badge-html-desc" class="sr-only">Conquista por completar a seção HTML</span>
                 </div>
-                <div class="badge locked" id="badge-css" title="Artista CSS">
-                    <i class="fab fa-css3-alt"></i>                    <span>CSS Artist</span>
+                <div class="badge locked" id="badge-css" title="Artista CSS" role="listitem" aria-describedby="badge-css-desc">
+                    <i class="fab fa-css3-alt" aria-hidden="true"></i>
+                    <span>CSS Artist</span>
+                    <span id="badge-css-desc" class="sr-only">Conquista por completar a seção CSS</span>
                 </div>
-                <div class="badge locked" id="badge-js" title="Lógico JS">
-                    <i class="fab fa-js"></i>
+                <div class="badge locked" id="badge-js" title="Lógico JS" role="listitem" aria-describedby="badge-js-desc">
+                    <i class="fab fa-js" aria-hidden="true"></i>
                     <span>JS Logic</span>
+                    <span id="badge-js-desc" class="sr-only">Conquista por completar a seção JavaScript</span>
                 </div>
-                <div class="badge locked" id="badge-dev" title="Desenvolvedor Fullstack">
-                    <i class="fas fa-rocket"></i>
+                <div class="badge locked" id="badge-dev" title="Desenvolvedor Fullstack" role="listitem" aria-describedby="badge-dev-desc">
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
                     <span>Dev Complete</span>
+                    <span id="badge-dev-desc" class="sr-only">Conquista por completar todas as seções</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container footer-content">
             <div class="footer-brand">
                 <h4>EducaWeb</h4>
                 <p>Ensinando o futuro, uma linha de código por vez.</p>
             </div>
             <div class="footer-status">
-                <span id="statusIndicator">● Online</span>
-                <p id="lastAction">Aguardando interação...</p>
+                <span id="statusIndicator" aria-live="polite">● Online</span>
+                <p id="lastAction" aria-live="polite">Aguardando interação...</p>
             </div>
         </div>
         <div class="copyright">
             &copy; 2026 EducaWeb Project.
         </div>
     </footer>
+    
+    </main>
 
     <!-- SEU JAVASCRIPT -->
     <script src="script.js"></script>
